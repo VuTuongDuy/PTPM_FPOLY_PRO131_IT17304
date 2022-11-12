@@ -45,5 +45,21 @@ namespace _3.PL.Views
             OpenFormChild(new FrmBanHang());
             lbl_home.Text = btn_muaH.Text;
         }
+
+        private void btn_MuaHang_Click(object sender, EventArgs e)
+        {
+            if (currentFormChild != null)
+            {
+                currentFormChild.Close();
+            }
+        }
+
+        private void btn_image_Click(object sender, EventArgs e)
+        {
+            if (currentFormChild != null)
+            {
+                currentFormChild.Close();
+            }
+        }
     }
 }
