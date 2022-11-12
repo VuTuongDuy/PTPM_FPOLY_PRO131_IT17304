@@ -63,6 +63,26 @@ namespace _3.PL.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap c36968799e5287ff044a31a878e3cc6a {
+            get {
+                object obj = ResourceManager.GetObject("c36968799e5287ff044a31a878e3cc6a", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap c36968799e5287ff044a31a878e3cc6a__1_ {
+            get {
+                object obj = ResourceManager.GetObject("c36968799e5287ff044a31a878e3cc6a (1)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap icons8_buying_16 {
             get {
                 object obj = ResourceManager.GetObject("icons8-buying-16", resourceCulture);
