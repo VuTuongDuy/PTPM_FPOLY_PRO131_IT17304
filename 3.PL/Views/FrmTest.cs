@@ -11,9 +11,9 @@ using System.Windows.Forms;
 
 namespace _3.PL.Views
 {
-    public partial class FrmDangNhap : Form
+    public partial class FrmTest : Form
     {
-        public FrmDangNhap()
+        public FrmTest()
         {
             InitializeComponent();
         }
@@ -28,32 +28,7 @@ namespace _3.PL.Views
             int nWidthEllipse,
             int nHeightEllipse
         );
-        private void panel3_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void textBox2_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void pictureBox4_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void pictureBox3_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
-        }
-
-        private void FrmDangNhap_Load(object sender, EventArgs e)
+        private void FrmTest_Load(object sender, EventArgs e)
         {
             panel1.Location = new Point(
             this.ClientSize.Width / 2 - panel1.Size.Width / 2,
@@ -62,6 +37,11 @@ namespace _3.PL.Views
 
             panel1.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, panel1.Width,
             panel1.Height, 30, 30));
+        }
+
+        private void pictureBox3_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }
