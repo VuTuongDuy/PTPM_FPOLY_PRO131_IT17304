@@ -56,7 +56,7 @@
             this.groupBox_dsSp.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox_dsSp.Name = "groupBox_dsSp";
             this.groupBox_dsSp.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.groupBox_dsSp.Size = new System.Drawing.Size(1032, 206);
+            this.groupBox_dsSp.Size = new System.Drawing.Size(829, 206);
             this.groupBox_dsSp.TabIndex = 8;
             this.groupBox_dsSp.TabStop = false;
             this.groupBox_dsSp.Text = "Danh sách sản phẩm";
@@ -83,7 +83,7 @@
             this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.groupBox1.Size = new System.Drawing.Size(1022, 136);
+            this.groupBox1.Size = new System.Drawing.Size(852, 136);
             this.groupBox1.TabIndex = 9;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Giỏ hàng";
@@ -110,7 +110,7 @@
             this.groupBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.groupBox2.Size = new System.Drawing.Size(936, 111);
+            this.groupBox2.Size = new System.Drawing.Size(746, 111);
             this.groupBox2.TabIndex = 10;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Danh sách hóa đơn";
@@ -136,7 +136,7 @@
             this.groupBox3.Controls.Add(this.label2);
             this.groupBox3.Controls.Add(this.label1);
             this.groupBox3.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.groupBox3.Location = new System.Drawing.Point(1039, 24);
+            this.groupBox3.Location = new System.Drawing.Point(870, 13);
             this.groupBox3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -190,7 +190,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1295, 475);
+            this.ClientSize = new System.Drawing.Size(1138, 475);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);

@@ -59,7 +59,7 @@
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(221, 434);
+            this.panel1.Size = new System.Drawing.Size(221, 622);
             this.panel1.TabIndex = 3;
             // 
             // button5
@@ -185,7 +185,7 @@
             this.panel_home.Location = new System.Drawing.Point(221, 0);
             this.panel_home.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel_home.Name = "panel_home";
-            this.panel_home.Size = new System.Drawing.Size(839, 70);
+            this.panel_home.Size = new System.Drawing.Size(1102, 70);
             this.panel_home.TabIndex = 4;
             // 
             // lbl_home
@@ -193,7 +193,7 @@
             this.lbl_home.AutoSize = true;
             this.lbl_home.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lbl_home.ForeColor = System.Drawing.Color.White;
-            this.lbl_home.Location = new System.Drawing.Point(401, 22);
+            this.lbl_home.Location = new System.Drawing.Point(506, 21);
             this.lbl_home.Name = "lbl_home";
             this.lbl_home.Size = new System.Drawing.Size(69, 25);
             this.lbl_home.TabIndex = 0;
@@ -203,7 +203,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Brush Script MT", 25.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(251, 27);
+            this.label1.Location = new System.Drawing.Point(360, 88);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(259, 43);
             this.label1.TabIndex = 6;
@@ -213,7 +213,7 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = global::_3.PL.Properties.Resources.Logo_giup_khach_hang_nho_toi_shop_giay_cua_ban_lau_hon__1_;
-            this.pictureBox1.Location = new System.Drawing.Point(98, 85);
+            this.pictureBox1.Location = new System.Drawing.Point(207, 146);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(610, 220);
@@ -226,7 +226,7 @@
             this.panel_main.Controls.Add(this.pictureBox1);
             this.panel_main.Location = new System.Drawing.Point(221, 70);
             this.panel_main.Name = "panel_main";
-            this.panel_main.Size = new System.Drawing.Size(839, 364);
+            this.panel_main.Size = new System.Drawing.Size(1102, 552);
             this.panel_main.TabIndex = 7;
             // 
             // FrmMain
@@ -234,7 +234,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1060, 434);
+            this.ClientSize = new System.Drawing.Size(1323, 622);
             this.Controls.Add(this.panel_main);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel_home);
