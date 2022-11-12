@@ -11,9 +11,9 @@ using System.Windows.Forms;
 
 namespace _3.PL.Views
 {
-    public partial class FrmTest : Form
+    public partial class FrmDangNhap : Form
     {
-        public FrmTest()
+        public FrmDangNhap()
         {
             InitializeComponent();
         }
