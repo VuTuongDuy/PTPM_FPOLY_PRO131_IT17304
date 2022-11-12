@@ -15,6 +15,7 @@ namespace _3.PL.Views
         public FrmBanHang()
         {
             InitializeComponent();
+            // hello
         }
     }
 }
