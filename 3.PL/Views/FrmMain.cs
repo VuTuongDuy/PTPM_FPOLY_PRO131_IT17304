@@ -16,12 +16,34 @@ namespace _3.PL.Views
         {
             InitializeComponent();
         }
-
-        private void button2_Click(object sender, EventArgs e)
+        private Form currentFormChild;
+        private void OpenFormChild(Form formChild)
         {
-            FrmBanHang frmBanHang = new FrmBanHang();
-            frmBanHang.ShowDialog();
-            this.Close();
+            if(currentFormChild!=null)
+            {
+                currentFormChild.Close();
+            }
+            currentFormChild = formChild;
+            formChild.TopLevel = false;
+            formChild.FormBorderStyle = FormBorderStyle.None;
+            formChild.Dock = DockStyle.Fill;
+            panel_main.Controls.Add(formChild);
+            panel_main.Tag = formChild;
+            formChild.BringToFront();
+            formChild.Show();
+        }   
+
+        
+        
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btn_muaH_Click(object sender, EventArgs e)
+        {
+            OpenFormChild(new FrmBanHang());
+            lbl_home.Text = btn_muaH.Text;
         }
     }
 }
