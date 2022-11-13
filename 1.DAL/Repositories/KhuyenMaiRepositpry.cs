@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace _1.DAL.Repositories
 {
-    internal class KhuyenMaiRepositpry : IKhuyenMaiRepository
+    public class KhuyenMaiRepositpry : IKhuyenMaiRepository
     {
         private FpolyDBContext _dbContext;
         public KhuyenMaiRepositpry()

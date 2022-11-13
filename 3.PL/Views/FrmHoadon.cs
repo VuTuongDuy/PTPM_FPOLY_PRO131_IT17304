@@ -1,5 +1,6 @@
 ﻿using _1.DAL.DomainClass;
 using _1.DAL.IRepositories;
+using _1.DAL.Repositories;
 using _2.BUS.Services;
 using _2.BUS.ViewModels;
 using System;
@@ -17,16 +18,17 @@ namespace _3.PL.Views
     public partial class FrmHoadon : Form
     {
         private IHoaDonRepository _iHoadonrepo;
-        private HoaDonService _hoaDonService;
-        private HoaDon _hoadon;
-        private List<HoaDon> _lsthoadon;
-        private ViewHoaDon _viewHoaDon;
+        private ISanPhamRepository _anPhamrepo;
+        private IKhachHangRepository khachHangRepository;
+        private INhanVienRepository nhanVienRepository;
+        private List<ViewHoaDon> _viewHoaDon;
         public FrmHoadon()
         {
             InitializeComponent();
-            _hoadon = new HoaDon();
-            _lsthoadon = new List<HoaDon>();
-            _hoaDonService = new HoaDonService();
+            nhanVienRepository = new NhanVienRepository();
+            khachHangRepository = new KhachHangRepository();
+            _iHoadonrepo = new HoaDonRepository();
+            _viewHoaDon = new List<ViewHoaDon>();
             Loaddata();
         }
         public void Loaddata()
@@ -47,9 +49,8 @@ namespace _3.PL.Views
             dgrid_view.Columns[11].Name = "Sdt";
             dgrid_view.Columns[12].Name = "Giảm GIá";
             dgrid_view.Columns[13].Name = "Trạng Thái";
-            
             dgrid_view.Rows.Clear();
-            foreach (var x in _hoaDonService.GetAll())
+            foreach (var x in _viewHoaDon.OrderBy(c=>c.Ma).ToList())
             {
                 dgrid_view.Rows.Add(x.Id,x.Ma,x.khachhang,x.sanpham, x.nhanvien,x.TenSp, x.TenNguoiNhan, x.NgayTao,x.NgayGiao,x.NgayThanhToan,x.DiaChi,x.Sdt,x.GiamGia,x.TrangThai);
             };

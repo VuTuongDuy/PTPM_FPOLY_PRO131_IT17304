@@ -22,10 +22,11 @@ namespace _2.BUS.Services
         private List<ViewHoaDon> _viewHoaDons;
         public HoaDonService()
         {
+            _iHoaDonRepository = new HoaDonRepository();
             _ISanPhamRepository = new SanPhamRepository();
             _INhanVienRepository = new NhanVienRepository();
             _ikhachHangRepository = new KhachHangRepository();
-            _lstHoadon = new List<HoaDon>();
+            
         }
 
         public string Add(ViewHoaDon obj)

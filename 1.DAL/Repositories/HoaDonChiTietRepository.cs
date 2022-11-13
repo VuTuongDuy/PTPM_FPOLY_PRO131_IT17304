@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace _1.DAL.Repositories
 {
-    internal class HoaDonChiTietRepository : IHoaDonChiTietRipositry
+    public class HoaDonChiTietRepository : IHoaDonChiTietRipositry
     {
         public FpolyDBContext _dbConText;
         public HoaDonChiTietRepository()
