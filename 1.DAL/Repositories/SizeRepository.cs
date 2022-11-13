@@ -1,7 +1,6 @@
 ﻿using _1.DAL.Context;
 using _1.DAL.DomainClass;
 using _1.DAL.IRepositories;
-using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,33 +9,33 @@ using System.Threading.Tasks;
 
 namespace _1.DAL.Repositories
 {
-    public class ChatLieuRepository : IChatLieuRepository
+    public class SizeRepository : ISizeRepository
     {
         private FpolyDBContext _dbContext;
-        public ChatLieuRepository()
+        public SizeRepository()
         {
             _dbContext = new FpolyDBContext();
         }
-        public bool AddChatLieu(ChatLieu obj)
+        public bool AddSize(Size obj)
         {
             _dbContext.Add(obj);
             _dbContext.SaveChanges();
             return true;
         }
 
-        public bool DeleteChatLieu(ChatLieu obj)
-        {   
+        public bool DeleteSize(Size obj)
+        {
             _dbContext.Remove(obj);
             _dbContext.SaveChanges();
             return true;
         }
 
-        public List<ChatLieu> GetAllChatLieu()
+        public List<Size> GetAllSize()
         {
-            return _dbContext.ChatLieus.ToList();
+            return _dbContext.Sizes.ToList();
         }
 
-        public bool UpdateChatLieu(ChatLieu obj)
+        public bool UpdateSize(Size obj)
         {
             _dbContext.Update(obj);
             _dbContext.SaveChanges();
