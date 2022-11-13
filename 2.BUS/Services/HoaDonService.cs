@@ -12,9 +12,9 @@ using System.Threading.Tasks;
 
 namespace _2.BUS.Services
 {
-    internal class HoaDonService : IHoaDonService
+    public class HoaDonService : IHoaDonService
     {
-        private IHoaDonRepository _hoaDonService;
+        //private IHoaDonRepository _hoaDonService;
         private INhanVienRepository _INhanVienRepository;
         private ISanPhamRepository _ISanPhamRepository;
         private IKhachHangRepository _ikhachHangRepository;
@@ -22,8 +22,8 @@ namespace _2.BUS.Services
         public HoaDonService()
         {
             _ISanPhamRepository = new SanPhamRepository();
-            _INhanVienRepository = new NhanVienRepository();
-            _ikhachHangRepository = new KhachHangRepository();
+           // _INhanVienRepository = new NhanVienRepository();
+            //_ikhachHangRepository = new KhachHangRepository();
             
         }
 

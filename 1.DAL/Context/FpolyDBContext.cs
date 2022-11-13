@@ -39,18 +39,9 @@ namespace _1.DAL.Context
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-<<<<<<< HEAD
                 optionsBuilder.UseSqlServer("Data Source=LAPTOP-46F72MJA\\SQLEXPRESS;Initial Catalog=Duan1;Persist Security Info=True;User ID=duyvtph24890;Password=123456");
-=======
-                optionsBuilder.UseSqlServer("Data Source=LAPTOP-5L6JRFPL\\ANHKH;Initial Catalog=Duan1;Persist Security Info=True;User ID=anhhkph24928;Password=123456");
->>>>>>> d3f6a0910eab86e3e9c5e6f2b3418b8af5af298e
             }
         }
-    
-
-
-        
-
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.HasAnnotation("Relational:Collation", "SQL_Latin1_General_CP1_CI_AS");
