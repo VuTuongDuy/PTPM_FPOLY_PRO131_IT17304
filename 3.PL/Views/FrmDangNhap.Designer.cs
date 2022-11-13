@@ -37,9 +37,9 @@
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txt_mk = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txt_tk = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
@@ -75,9 +75,9 @@
             this.panel3.Controls.Add(this.pictureBox5);
             this.panel3.Controls.Add(this.pictureBox4);
             this.panel3.Controls.Add(this.pictureBox2);
-            this.panel3.Controls.Add(this.textBox2);
+            this.panel3.Controls.Add(this.txt_mk);
             this.panel3.Controls.Add(this.label2);
-            this.panel3.Controls.Add(this.textBox1);
+            this.panel3.Controls.Add(this.txt_tk);
             this.panel3.Controls.Add(this.label1);
             this.panel3.Controls.Add(this.panel4);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Right;
@@ -156,18 +156,18 @@
             this.pictureBox2.TabIndex = 5;
             this.pictureBox2.TabStop = false;
             // 
-            // textBox2
+            // txt_mk
             // 
-            this.textBox2.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBox2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(61)))), ((int)(((byte)(86)))));
-            this.textBox2.Location = new System.Drawing.Point(40, 227);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBox2.MaxLength = 50;
-            this.textBox2.Multiline = true;
-            this.textBox2.Name = "textBox2";
-            this.textBox2.PasswordChar = '*';
-            this.textBox2.Size = new System.Drawing.Size(363, 33);
-            this.textBox2.TabIndex = 4;
+            this.txt_mk.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txt_mk.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(61)))), ((int)(((byte)(86)))));
+            this.txt_mk.Location = new System.Drawing.Point(40, 227);
+            this.txt_mk.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txt_mk.MaxLength = 50;
+            this.txt_mk.Multiline = true;
+            this.txt_mk.Name = "txt_mk";
+            this.txt_mk.PasswordChar = '*';
+            this.txt_mk.Size = new System.Drawing.Size(363, 33);
+            this.txt_mk.TabIndex = 4;
             // 
             // label2
             // 
@@ -181,17 +181,17 @@
             this.label2.TabIndex = 3;
             this.label2.Text = "Password:";
             // 
-            // textBox1
+            // txt_tk
             // 
-            this.textBox1.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(61)))), ((int)(((byte)(86)))));
-            this.textBox1.Location = new System.Drawing.Point(40, 147);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBox1.MaxLength = 50;
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(363, 33);
-            this.textBox1.TabIndex = 2;
+            this.txt_tk.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txt_tk.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(61)))), ((int)(((byte)(86)))));
+            this.txt_tk.Location = new System.Drawing.Point(40, 147);
+            this.txt_tk.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txt_tk.MaxLength = 50;
+            this.txt_tk.Multiline = true;
+            this.txt_tk.Name = "txt_tk";
+            this.txt_tk.Size = new System.Drawing.Size(363, 33);
+            this.txt_tk.TabIndex = 2;
             // 
             // label1
             // 
@@ -260,7 +260,10 @@
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(1132, 460);
             this.Controls.Add(this.panel1);
+<<<<<<< HEAD
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+=======
+>>>>>>> 1e29c456808ee383064bce2dabc909ead9a8ed7e
             this.Name = "FrmDangNhap";
             this.Text = "FrmTest";
             this.Load += new System.EventHandler(this.FrmTest_Load);
@@ -288,9 +291,9 @@
         private System.Windows.Forms.PictureBox pictureBox5;
         private System.Windows.Forms.PictureBox pictureBox4;
         private System.Windows.Forms.PictureBox pictureBox2;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txt_mk;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txt_tk;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.PictureBox pictureBox3;
