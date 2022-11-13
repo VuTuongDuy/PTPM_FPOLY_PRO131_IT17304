@@ -1,7 +1,6 @@
 ﻿using _1.DAL.DomainClass;
 using _2.BUS.IServices;
 using _2.BUS.Services;
-using _2.BUS.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,40 +13,40 @@ using System.Windows.Forms;
 
 namespace _3.PL.Views
 {
-    public partial class FrmChatLieu : Form
+    public partial class FrmNhaSanXuat : Form
     {
-        private IChatLieuService _IChatLieuService;
-        private ChatLieu _chatLieu;
-        private List<ChatLieu> _lstChatLieu;
-        public FrmChatLieu()
+        private INhaSanXuatService _INhaSanXuatService;
+        private Nsx _nsx;
+        private List<Nsx> _lstNsx;
+        public FrmNhaSanXuat()
         {
             InitializeComponent();
-            _IChatLieuService = new ChatLieuService();
-            _lstChatLieu = new List<ChatLieu>();
+            _INhaSanXuatService = new NhaSanXuatService();
+            _lstNsx = new List<Nsx>();
             LoadData();
         }
         public void LoadData()
         {
-            dgrid_ChatLieu.ColumnCount = 4;
-            dgrid_ChatLieu.Columns[0].Name = "ID";
-            dgrid_ChatLieu.Columns[0].Visible = false;
-            dgrid_ChatLieu.Columns[1].Name = "Mã";
-            dgrid_ChatLieu.Columns[2].Name = "Tên";
-            dgrid_ChatLieu.Columns[3].Name = "Trạng thái";
-            dgrid_ChatLieu.Rows.Clear();
-            _lstChatLieu = _IChatLieuService.GetAllChatLieu();
+            dgrid_Nsx.ColumnCount = 4;
+            dgrid_Nsx.Columns[0].Name = "ID";
+            dgrid_Nsx.Columns[0].Visible = false;
+            dgrid_Nsx.Columns[1].Name = "Mã";
+            dgrid_Nsx.Columns[2].Name = "Tên";
+            dgrid_Nsx.Columns[3].Name = "Trạng thái";
+            dgrid_Nsx.Rows.Clear();
+            _lstNsx = _INhaSanXuatService.GetAllNSX();
             if (txt_TimKiem.Text != "")
             {
-                _lstChatLieu = _lstChatLieu.Where(p => p.Ten.ToLower().Contains(txt_TimKiem.Text.ToLower())).ToList();
+                _lstNsx = _lstNsx.Where(p => p.Ten.ToLower().Contains(txt_TimKiem.Text.ToLower())).ToList();
             }
-            foreach (var x in _lstChatLieu.OrderBy(c => c.Ma).ToList())
+            foreach (var x in _lstNsx.OrderBy(c => c.Ma).ToList())
             {
-                dgrid_ChatLieu.Rows.Add(x.Id, x.Ma, x.Ten, x.TrangThai == 1 ? "Hoạt động" : "Không hoạt động");
+                dgrid_Nsx.Rows.Add(x.Id, x.Ma, x.Ten, x.TrangThai == 1 ? "Hoạt động" : "Không hoạt động");
             }
         }
-        private ChatLieu GetDataFromGuid()
+        private Nsx GetDataFromGuid()
         {
-            return new ChatLieu()
+            return new Nsx()
             {
                 Id = Guid.NewGuid(),
                 Ma = txt_Ma.Text,
@@ -55,12 +54,13 @@ namespace _3.PL.Views
                 TrangThai = cbx_HoatDong.Checked ? 1 : 0
             };
         }
+
         private void btn_Them_Click(object sender, EventArgs e)
         {
             DialogResult dialogResult = MessageBox.Show("Bạn chắc chắn muốn thêm?", "Thông báo", MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.Yes)
             {
-                _IChatLieuService.AddChatLieu(GetDataFromGuid());
+                _INhaSanXuatService.AddNSX(GetDataFromGuid());
                 MessageBox.Show("Thêm thành công");
                 LoadData();
             }
@@ -75,10 +75,10 @@ namespace _3.PL.Views
             DialogResult dialogResult = MessageBox.Show("Bạn chắc chắn muốn sửa?", "Thông báo", MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.Yes)
             {
-                _chatLieu.Ma = txt_Ma.Text;
-                _chatLieu.Ten = txt_Ten.Text;
-                _chatLieu.TrangThai = cbx_HoatDong.Checked ? 1 : 0;
-                _IChatLieuService.UpdateChatLieu(_chatLieu);
+                _nsx.Ma = txt_Ma.Text;
+                _nsx.Ten = txt_Ten.Text;
+                _nsx.TrangThai = cbx_HoatDong.Checked ? 1 : 0;
+                _INhaSanXuatService.UpdateNSX(_nsx);
                 MessageBox.Show("Sửa thành công");
                 LoadData();
             }
@@ -93,7 +93,7 @@ namespace _3.PL.Views
             DialogResult dialogResult = MessageBox.Show("Bạn chắc chắn muốn xóa?", "Thông báo", MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.Yes)
             {
-                _IChatLieuService.DeleteChatLieu(_chatLieu);
+                _INhaSanXuatService.DeleteNSX(_nsx);
                 MessageBox.Show("Xóa thành công");
                 LoadData();
             }
@@ -118,22 +118,22 @@ namespace _3.PL.Views
             }
         }
 
-        private void dgrid_ChatLieu_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-           
-        }
-
-        private void dgrid_ChatLieu_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void dgrid_Nsx_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0)
             {
-                DataGridViewRow r = dgrid_ChatLieu.Rows[e.RowIndex];
-                _chatLieu = _IChatLieuService.GetAllChatLieu().FirstOrDefault(c => c.Id == Guid.Parse(r.Cells[0].Value.ToString()));
-                txt_Ma.Text = _chatLieu.Ma;
-                txt_Ten.Text = _chatLieu.Ten;
-                cbx_HoatDong.Checked = _chatLieu.TrangThai == 1;
-                cbx_KhongHD.Checked = _chatLieu.TrangThai == 0;
+                DataGridViewRow r = dgrid_Nsx.Rows[e.RowIndex];
+                _nsx = _INhaSanXuatService.GetAllNSX().FirstOrDefault(c => c.Id == Guid.Parse(r.Cells[0].Value.ToString()));
+                txt_Ma.Text = _nsx.Ma;
+                txt_Ten.Text = _nsx.Ten;
+                cbx_HoatDong.Checked = _nsx.TrangThai == 1;
+                cbx_KhongHD.Checked = _nsx.TrangThai == 0;
             }
+        }
+
+        private void btn_TimKiem_Click(object sender, EventArgs e)
+        {
+            LoadData();
         }
 
         private void cbx_HoatDong_CheckedChanged(object sender, EventArgs e)
@@ -150,11 +150,6 @@ namespace _3.PL.Views
             {
                 cbx_HoatDong.Checked = false;
             }
-        }
-
-        private void btn_TimKiem_Click(object sender, EventArgs e)
-        {
-            LoadData();
         }
     }
 }

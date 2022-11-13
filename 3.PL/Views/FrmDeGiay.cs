@@ -1,7 +1,6 @@
 ﻿using _1.DAL.DomainClass;
 using _2.BUS.IServices;
 using _2.BUS.Services;
-using _2.BUS.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,53 +13,58 @@ using System.Windows.Forms;
 
 namespace _3.PL.Views
 {
-    public partial class FrmChatLieu : Form
+    public partial class FrmDeGiay : Form
     {
-        private IChatLieuService _IChatLieuService;
-        private ChatLieu _chatLieu;
-        private List<ChatLieu> _lstChatLieu;
-        public FrmChatLieu()
+        private IDeGiayService _IDeGiayService;
+        private DeGiay _deGiay;
+        private List<DeGiay> _lstDeGiay;
+        public FrmDeGiay()
         {
             InitializeComponent();
-            _IChatLieuService = new ChatLieuService();
-            _lstChatLieu = new List<ChatLieu>();
+            _IDeGiayService = new DeGiayService();
+            _lstDeGiay = new List<DeGiay>();
             LoadData();
         }
         public void LoadData()
         {
-            dgrid_ChatLieu.ColumnCount = 4;
-            dgrid_ChatLieu.Columns[0].Name = "ID";
-            dgrid_ChatLieu.Columns[0].Visible = false;
-            dgrid_ChatLieu.Columns[1].Name = "Mã";
-            dgrid_ChatLieu.Columns[2].Name = "Tên";
-            dgrid_ChatLieu.Columns[3].Name = "Trạng thái";
-            dgrid_ChatLieu.Rows.Clear();
-            _lstChatLieu = _IChatLieuService.GetAllChatLieu();
+            dgrid_DeGiay.ColumnCount = 6;
+            dgrid_DeGiay.Columns[0].Name = "ID";
+            dgrid_DeGiay.Columns[0].Visible = false;
+            dgrid_DeGiay.Columns[1].Name = "Mã";
+            dgrid_DeGiay.Columns[2].Name = "Tên";
+            dgrid_DeGiay.Columns[3].Name = "Chất liệu";
+            dgrid_DeGiay.Columns[4].Name = "Chiều cao";
+            dgrid_DeGiay.Columns[5].Name = "Trạng thái";
+            dgrid_DeGiay.Rows.Clear();
+            _lstDeGiay = _IDeGiayService.GetAllDeGiay();
             if (txt_TimKiem.Text != "")
             {
-                _lstChatLieu = _lstChatLieu.Where(p => p.Ten.ToLower().Contains(txt_TimKiem.Text.ToLower())).ToList();
+                _lstDeGiay = _lstDeGiay.Where(p => p.Ten.ToLower().Contains(txt_TimKiem.Text.ToLower())).ToList();
             }
-            foreach (var x in _lstChatLieu.OrderBy(c => c.Ma).ToList())
+            foreach (var x in _lstDeGiay.OrderBy(c => c.Ma).ToList())
             {
-                dgrid_ChatLieu.Rows.Add(x.Id, x.Ma, x.Ten, x.TrangThai == 1 ? "Hoạt động" : "Không hoạt động");
+                dgrid_DeGiay.Rows.Add(x.Id, x.Ma, x.Ten, x.ChatLieu, x.ChieuCao, x.TrangThai == 1 ? "Hoạt động" : "Không hoạt động");
             }
         }
-        private ChatLieu GetDataFromGuid()
+        private DeGiay GetDataFromGuid()
         {
-            return new ChatLieu()
+            return new DeGiay()
             {
                 Id = Guid.NewGuid(),
                 Ma = txt_Ma.Text,
                 Ten = txt_Ten.Text,
+                ChatLieu = txt_ChatLieu.Text,
+                ChieuCao = Convert.ToInt32(txt_ChieuCao.Text),
                 TrangThai = cbx_HoatDong.Checked ? 1 : 0
             };
         }
+
         private void btn_Them_Click(object sender, EventArgs e)
         {
             DialogResult dialogResult = MessageBox.Show("Bạn chắc chắn muốn thêm?", "Thông báo", MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.Yes)
             {
-                _IChatLieuService.AddChatLieu(GetDataFromGuid());
+                _IDeGiayService.AddDeGiay(GetDataFromGuid());
                 MessageBox.Show("Thêm thành công");
                 LoadData();
             }
@@ -75,10 +79,12 @@ namespace _3.PL.Views
             DialogResult dialogResult = MessageBox.Show("Bạn chắc chắn muốn sửa?", "Thông báo", MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.Yes)
             {
-                _chatLieu.Ma = txt_Ma.Text;
-                _chatLieu.Ten = txt_Ten.Text;
-                _chatLieu.TrangThai = cbx_HoatDong.Checked ? 1 : 0;
-                _IChatLieuService.UpdateChatLieu(_chatLieu);
+                _deGiay.Ma = txt_Ma.Text;
+                _deGiay.Ten = txt_Ten.Text;
+                _deGiay.ChatLieu = txt_ChatLieu.Text;
+                _deGiay.ChieuCao = Convert.ToInt32(txt_ChieuCao.Text);
+                _deGiay.TrangThai = cbx_HoatDong.Checked ? 1 : 0;
+                _IDeGiayService.UpdateDeGiay(_deGiay);
                 MessageBox.Show("Sửa thành công");
                 LoadData();
             }
@@ -93,7 +99,7 @@ namespace _3.PL.Views
             DialogResult dialogResult = MessageBox.Show("Bạn chắc chắn muốn xóa?", "Thông báo", MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.Yes)
             {
-                _IChatLieuService.DeleteChatLieu(_chatLieu);
+                _IDeGiayService.DeleteDeGiay(_deGiay);
                 MessageBox.Show("Xóa thành công");
                 LoadData();
             }
@@ -110,6 +116,8 @@ namespace _3.PL.Views
             {
                 txt_Ma.Clear();
                 txt_Ten.Clear();
+                txt_ChatLieu.Clear();
+                txt_ChieuCao.Clear();
                 cbx_KhongHD.Checked = true;
             }
             if (dialogResult == DialogResult.No)
@@ -118,21 +126,23 @@ namespace _3.PL.Views
             }
         }
 
-        private void dgrid_ChatLieu_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void btn_TimKiem_Click(object sender, EventArgs e)
         {
-           
+            LoadData();
         }
 
-        private void dgrid_ChatLieu_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void dgrid_DeGiay_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0)
             {
-                DataGridViewRow r = dgrid_ChatLieu.Rows[e.RowIndex];
-                _chatLieu = _IChatLieuService.GetAllChatLieu().FirstOrDefault(c => c.Id == Guid.Parse(r.Cells[0].Value.ToString()));
-                txt_Ma.Text = _chatLieu.Ma;
-                txt_Ten.Text = _chatLieu.Ten;
-                cbx_HoatDong.Checked = _chatLieu.TrangThai == 1;
-                cbx_KhongHD.Checked = _chatLieu.TrangThai == 0;
+                DataGridViewRow r = dgrid_DeGiay.Rows[e.RowIndex];
+                _deGiay = _IDeGiayService.GetAllDeGiay().FirstOrDefault(c => c.Id == Guid.Parse(r.Cells[0].Value.ToString()));
+                txt_Ma.Text = _deGiay.Ma;
+                txt_Ten.Text = _deGiay.Ten;
+                txt_ChatLieu.Text = _deGiay.ChatLieu;
+                txt_ChieuCao.Text = Convert.ToString(_deGiay.ChieuCao);
+                cbx_HoatDong.Checked = _deGiay.TrangThai == 1;
+                cbx_KhongHD.Checked = _deGiay.TrangThai == 0;
             }
         }
 
@@ -150,11 +160,6 @@ namespace _3.PL.Views
             {
                 cbx_HoatDong.Checked = false;
             }
-        }
-
-        private void btn_TimKiem_Click(object sender, EventArgs e)
-        {
-            LoadData();
         }
     }
 }
