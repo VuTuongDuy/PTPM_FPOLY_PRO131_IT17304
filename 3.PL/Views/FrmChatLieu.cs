@@ -120,6 +120,11 @@ namespace _3.PL.Views
 
         private void dgrid_ChatLieu_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+           
+        }
+
+        private void dgrid_ChatLieu_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
             if (e.RowIndex >= 0)
             {
                 DataGridViewRow r = dgrid_ChatLieu.Rows[e.RowIndex];
