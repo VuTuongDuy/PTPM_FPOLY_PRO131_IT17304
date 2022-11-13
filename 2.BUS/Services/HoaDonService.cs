@@ -12,19 +12,20 @@ using System.Threading.Tasks;
 
 namespace _2.BUS.Services
 {
-    internal class HoaDonService : IHoaDonService
+    public class HoaDonService : IHoaDonService
     {
-        private IHoaDonRepository _hoaDonService;
+        private IHoaDonRepository _iHoaDonRepository;
         private INhanVienRepository _INhanVienRepository;
         private ISanPhamRepository _ISanPhamRepository;
         private IKhachHangRepository _ikhachHangRepository;
-        
+        private List<HoaDon> _lstHoadon;
+        private List<ViewHoaDon> _viewHoaDons;
         public HoaDonService()
         {
             _ISanPhamRepository = new SanPhamRepository();
             _INhanVienRepository = new NhanVienRepository();
             _ikhachHangRepository = new KhachHangRepository();
-            
+            _lstHoadon = new List<HoaDon>();
         }
 
         public string Add(ViewHoaDon obj)
@@ -47,7 +48,7 @@ namespace _2.BUS.Services
                 TrangThai = obj.TrangThai,
 
             };
-            _hoaDonService.Add(HoaDon);
+            _iHoaDonRepository.Add(HoaDon);
             return "thành công";
         }
 
@@ -71,13 +72,37 @@ namespace _2.BUS.Services
                 TrangThai = obj.TrangThai,
 
             };
-           
+            _iHoaDonRepository.Delete(HoaDon);
             return "thành công";
         }
 
-        public List<ViewHoaDon> GetAllChucVu()
+        public List<ViewHoaDon> GetAll()
         {
-            throw new NotImplementedException();
+            _viewHoaDons = (from hd in GetAll()
+                            join kh in _ikhachHangRepository.GetAll() on hd.IdKhachHang equals kh.Id
+                            join nv in _INhanVienRepository.GetAll() on hd.IdNhanVien equals nv.Id
+                            join sp in _ISanPhamRepository.GetAllSanPham() on hd.IdSanOham equals sp.Id
+                            select new ViewHoaDon
+                            {
+                               
+                               Id = hd.Id,
+                               khachhang = kh.Ten,
+                               sanpham = sp.Ten,
+                               nhanvien = nv.Ten,
+                               Ma = hd.Ma,
+                               TenSp = hd.TenSp,
+                               NgayGiao = hd.NgayTao,
+                               NgayThanhToan = hd.NgayThanhToan,
+                               NgayTao = hd.NgayTao,
+                               TenNguoiNhan = hd.TenNguoiNhan,
+                               DiaChi = hd.DiaChi,
+                               Sdt = hd.Sdt,
+                               GiamGia =hd.GiamGia,
+                               TrangThai = hd.TrangThai
+
+
+                            }).ToList();
+            return _viewHoaDons;
         }
 
         public ChucVu GetByID(Guid id)
@@ -105,7 +130,7 @@ namespace _2.BUS.Services
                 TrangThai = obj.TrangThai,
 
             };
-            
+            _iHoaDonRepository.Update(HoaDon);
             return "thành công";
         }
     }

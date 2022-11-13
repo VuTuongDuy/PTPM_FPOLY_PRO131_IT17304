@@ -8,12 +8,12 @@ using System.Threading.Tasks;
 
 namespace _2.BUS.IServices
 {
-    internal interface IHoaDonService
+    public interface IHoaDonService
     {
         string Add(ViewHoaDon obj);
         string Update(ViewHoaDon obj);
         string Delete(ViewHoaDon obj);
         ChucVu GetByID(Guid id);
-        List<ViewHoaDon> GetAllChucVu();
+        List<ViewHoaDon> GetAll();
     }
 }
