@@ -1,7 +1,6 @@
 ﻿using _1.DAL.DomainClass;
 using _2.BUS.IServices;
 using _2.BUS.Services;
-using _2.BUS.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -11,43 +10,44 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Size = _1.DAL.DomainClass.Size;
 
 namespace _3.PL.Views
 {
-    public partial class FrmChatLieu : Form
+    public partial class FrmSize : Form
     {
-        private IChatLieuService _IChatLieuService;
-        private ChatLieu _chatLieu;
-        private List<ChatLieu> _lstChatLieu;
-        public FrmChatLieu()
+        private ISizeService _ISizeService;
+        private Size _Size;
+        private List<Size> _lstSize;
+        public FrmSize()
         {
             InitializeComponent();
-            _IChatLieuService = new ChatLieuService();
-            _lstChatLieu = new List<ChatLieu>();
+            _ISizeService = new SizeService();
+            _lstSize = new List<Size>();
             LoadData();
         }
         public void LoadData()
         {
-            dgrid_ChatLieu.ColumnCount = 4;
-            dgrid_ChatLieu.Columns[0].Name = "ID";
-            dgrid_ChatLieu.Columns[0].Visible = false;
-            dgrid_ChatLieu.Columns[1].Name = "Mã";
-            dgrid_ChatLieu.Columns[2].Name = "Tên";
-            dgrid_ChatLieu.Columns[3].Name = "Trạng thái";
-            dgrid_ChatLieu.Rows.Clear();
-            _lstChatLieu = _IChatLieuService.GetAllChatLieu();
+            dgrid_Size.ColumnCount = 4;
+            dgrid_Size.Columns[0].Name = "ID";
+            dgrid_Size.Columns[0].Visible = false;
+            dgrid_Size.Columns[1].Name = "Mã";
+            dgrid_Size.Columns[2].Name = "Tên";
+            dgrid_Size.Columns[3].Name = "Trạng thái";
+            dgrid_Size.Rows.Clear();
+            _lstSize = _ISizeService.GetAllSize();
             if (txt_TimKiem.Text != "")
             {
-                _lstChatLieu = _lstChatLieu.Where(p => p.Ten.ToLower().Contains(txt_TimKiem.Text.ToLower())).ToList();
+                _lstSize = _lstSize.Where(p => p.Ten.ToLower().Contains(txt_TimKiem.Text.ToLower())).ToList();
             }
-            foreach (var x in _lstChatLieu.OrderBy(c => c.Ma).ToList())
+            foreach (var x in _lstSize.OrderBy(c => c.Ma).ToList())
             {
-                dgrid_ChatLieu.Rows.Add(x.Id, x.Ma, x.Ten, x.TrangThai == 1 ? "Hoạt động" : "Không hoạt động");
+                dgrid_Size.Rows.Add(x.Id, x.Ma, x.Ten, x.TrangThai == 1 ? "Hoạt động" : "Không hoạt động");
             }
         }
-        private ChatLieu GetDataFromGuid()
+        private Size GetDataFromGuid()
         {
-            return new ChatLieu()
+            return new Size()
             {
                 Id = Guid.NewGuid(),
                 Ma = txt_Ma.Text,
@@ -60,7 +60,7 @@ namespace _3.PL.Views
             DialogResult dialogResult = MessageBox.Show("Bạn chắc chắn muốn thêm?", "Thông báo", MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.Yes)
             {
-                _IChatLieuService.AddChatLieu(GetDataFromGuid());
+                _ISizeService.AddSize(GetDataFromGuid());
                 MessageBox.Show("Thêm thành công");
                 LoadData();
             }
@@ -75,10 +75,10 @@ namespace _3.PL.Views
             DialogResult dialogResult = MessageBox.Show("Bạn chắc chắn muốn sửa?", "Thông báo", MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.Yes)
             {
-                _chatLieu.Ma = txt_Ma.Text;
-                _chatLieu.Ten = txt_Ten.Text;
-                _chatLieu.TrangThai = cbx_HoatDong.Checked ? 1 : 0;
-                _IChatLieuService.UpdateChatLieu(_chatLieu);
+                _Size.Ma = txt_Ma.Text;
+                _Size.Ten = txt_Ten.Text;
+                _Size.TrangThai = cbx_HoatDong.Checked ? 1 : 0;
+                _ISizeService.UpdateSize(_Size);
                 MessageBox.Show("Sửa thành công");
                 LoadData();
             }
@@ -93,7 +93,7 @@ namespace _3.PL.Views
             DialogResult dialogResult = MessageBox.Show("Bạn chắc chắn muốn xóa?", "Thông báo", MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.Yes)
             {
-                _IChatLieuService.DeleteChatLieu(_chatLieu);
+                _ISizeService.DeleteSize(_Size);
                 MessageBox.Show("Xóa thành công");
                 LoadData();
             }
@@ -118,16 +118,21 @@ namespace _3.PL.Views
             }
         }
 
-        private void dgrid_ChatLieu_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void btn_TimKiem_Click(object sender, EventArgs e)
+        {
+            LoadData();
+        }
+
+        private void dgrid_Size_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0)
             {
-                DataGridViewRow r = dgrid_ChatLieu.Rows[e.RowIndex];
-                _chatLieu = _IChatLieuService.GetAllChatLieu().FirstOrDefault(c => c.Id == Guid.Parse(r.Cells[0].Value.ToString()));
-                txt_Ma.Text = _chatLieu.Ma;
-                txt_Ten.Text = _chatLieu.Ten;
-                cbx_HoatDong.Checked = _chatLieu.TrangThai == 1;
-                cbx_KhongHD.Checked = _chatLieu.TrangThai == 0;
+                DataGridViewRow r = dgrid_Size.Rows[e.RowIndex];
+                _Size = _ISizeService.GetAllSize().FirstOrDefault(c => c.Id == Guid.Parse(r.Cells[0].Value.ToString()));
+                txt_Ma.Text = _Size.Ma;
+                txt_Ten.Text = _Size.Ten;
+                cbx_HoatDong.Checked = _Size.TrangThai == 1;
+                cbx_KhongHD.Checked = _Size.TrangThai == 0;
             }
         }
 
@@ -145,11 +150,6 @@ namespace _3.PL.Views
             {
                 cbx_HoatDong.Checked = false;
             }
-        }
-
-        private void btn_TimKiem_Click(object sender, EventArgs e)
-        {
-            LoadData();
         }
     }
 }

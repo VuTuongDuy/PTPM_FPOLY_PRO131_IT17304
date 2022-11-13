@@ -1,6 +1,6 @@
 ﻿namespace _3.PL.Views
 {
-    partial class FrmChatLieu
+    partial class FrmNhaSanXuat
     {
         /// <summary>
         /// Required designer variable.
@@ -28,9 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dgrid_ChatLieu = new System.Windows.Forms.DataGridView();
-            this.txt_TimKiem = new System.Windows.Forms.TextBox();
-            this.btn_TimKiem = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.txt_Ten = new System.Windows.Forms.TextBox();
             this.txt_Ma = new System.Windows.Forms.TextBox();
@@ -39,46 +36,18 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.btn_TimKiem = new System.Windows.Forms.Button();
+            this.txt_TimKiem = new System.Windows.Forms.TextBox();
+            this.dgrid_Nsx = new System.Windows.Forms.DataGridView();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.btn_Clear = new System.Windows.Forms.Button();
             this.btn_Xoa = new System.Windows.Forms.Button();
             this.btn_Sua = new System.Windows.Forms.Button();
             this.btn_Them = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dgrid_ChatLieu)).BeginInit();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgrid_Nsx)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // dgrid_ChatLieu
-            // 
-            this.dgrid_ChatLieu.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgrid_ChatLieu.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgrid_ChatLieu.Dock = System.Windows.Forms.DockStyle.Top;
-            this.dgrid_ChatLieu.Location = new System.Drawing.Point(0, 0);
-            this.dgrid_ChatLieu.Name = "dgrid_ChatLieu";
-            this.dgrid_ChatLieu.RowHeadersWidth = 51;
-            this.dgrid_ChatLieu.RowTemplate.Height = 29;
-            this.dgrid_ChatLieu.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgrid_ChatLieu.Size = new System.Drawing.Size(1278, 274);
-            this.dgrid_ChatLieu.TabIndex = 0;
-            this.dgrid_ChatLieu.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgrid_ChatLieu_CellContentClick);
-            // 
-            // txt_TimKiem
-            // 
-            this.txt_TimKiem.Location = new System.Drawing.Point(715, 290);
-            this.txt_TimKiem.Name = "txt_TimKiem";
-            this.txt_TimKiem.Size = new System.Drawing.Size(429, 27);
-            this.txt_TimKiem.TabIndex = 1;
-            // 
-            // btn_TimKiem
-            // 
-            this.btn_TimKiem.Location = new System.Drawing.Point(1163, 287);
-            this.btn_TimKiem.Name = "btn_TimKiem";
-            this.btn_TimKiem.Size = new System.Drawing.Size(94, 30);
-            this.btn_TimKiem.TabIndex = 2;
-            this.btn_TimKiem.Text = "Tìm kiếm";
-            this.btn_TimKiem.UseVisualStyleBackColor = true;
-            this.btn_TimKiem.Click += new System.EventHandler(this.btn_TimKiem_Click);
             // 
             // groupBox1
             // 
@@ -89,12 +58,12 @@
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Location = new System.Drawing.Point(12, 333);
+            this.groupBox1.Location = new System.Drawing.Point(0, 334);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(601, 257);
-            this.groupBox1.TabIndex = 3;
+            this.groupBox1.Size = new System.Drawing.Size(583, 257);
+            this.groupBox1.TabIndex = 8;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Thông tin chất liệu";
+            this.groupBox1.Text = "Thông tin nhà sản xuất";
             // 
             // txt_Ten
             // 
@@ -159,16 +128,47 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Mã:";
             // 
+            // btn_TimKiem
+            // 
+            this.btn_TimKiem.Location = new System.Drawing.Point(1133, 288);
+            this.btn_TimKiem.Name = "btn_TimKiem";
+            this.btn_TimKiem.Size = new System.Drawing.Size(94, 30);
+            this.btn_TimKiem.TabIndex = 7;
+            this.btn_TimKiem.Text = "Tìm kiếm";
+            this.btn_TimKiem.UseVisualStyleBackColor = true;
+            this.btn_TimKiem.Click += new System.EventHandler(this.btn_TimKiem_Click);
+            // 
+            // txt_TimKiem
+            // 
+            this.txt_TimKiem.Location = new System.Drawing.Point(685, 291);
+            this.txt_TimKiem.Name = "txt_TimKiem";
+            this.txt_TimKiem.Size = new System.Drawing.Size(429, 27);
+            this.txt_TimKiem.TabIndex = 6;
+            // 
+            // dgrid_Nsx
+            // 
+            this.dgrid_Nsx.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgrid_Nsx.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgrid_Nsx.Dock = System.Windows.Forms.DockStyle.Top;
+            this.dgrid_Nsx.Location = new System.Drawing.Point(0, 0);
+            this.dgrid_Nsx.Name = "dgrid_Nsx";
+            this.dgrid_Nsx.RowHeadersWidth = 51;
+            this.dgrid_Nsx.RowTemplate.Height = 29;
+            this.dgrid_Nsx.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgrid_Nsx.Size = new System.Drawing.Size(1229, 274);
+            this.dgrid_Nsx.TabIndex = 5;
+            this.dgrid_Nsx.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgrid_Nsx_CellClick);
+            // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.btn_Clear);
             this.groupBox2.Controls.Add(this.btn_Xoa);
             this.groupBox2.Controls.Add(this.btn_Sua);
             this.groupBox2.Controls.Add(this.btn_Them);
-            this.groupBox2.Location = new System.Drawing.Point(619, 333);
+            this.groupBox2.Location = new System.Drawing.Point(589, 334);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(659, 257);
-            this.groupBox2.TabIndex = 4;
+            this.groupBox2.Size = new System.Drawing.Size(640, 257);
+            this.groupBox2.TabIndex = 9;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Chức năng";
             // 
@@ -212,21 +212,21 @@
             this.btn_Them.UseVisualStyleBackColor = true;
             this.btn_Them.Click += new System.EventHandler(this.btn_Them_Click);
             // 
-            // FrmChatLieu
+            // FrmNhaSanXuat
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1278, 588);
-            this.Controls.Add(this.groupBox2);
+            this.ClientSize = new System.Drawing.Size(1229, 593);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btn_TimKiem);
             this.Controls.Add(this.txt_TimKiem);
-            this.Controls.Add(this.dgrid_ChatLieu);
-            this.Name = "FrmChatLieu";
-            this.Text = "FrmChatLieu";
-            ((System.ComponentModel.ISupportInitialize)(this.dgrid_ChatLieu)).EndInit();
+            this.Controls.Add(this.dgrid_Nsx);
+            this.Controls.Add(this.groupBox2);
+            this.Name = "FrmNhaSanXuat";
+            this.Text = "FrmNhaSanXuat";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgrid_Nsx)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -235,9 +235,6 @@
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dgrid_ChatLieu;
-        private System.Windows.Forms.TextBox txt_TimKiem;
-        private System.Windows.Forms.Button btn_TimKiem;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.TextBox txt_Ten;
         private System.Windows.Forms.TextBox txt_Ma;
@@ -246,6 +243,9 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btn_TimKiem;
+        private System.Windows.Forms.TextBox txt_TimKiem;
+        private System.Windows.Forms.DataGridView dgrid_Nsx;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Button btn_Clear;
         private System.Windows.Forms.Button btn_Xoa;
