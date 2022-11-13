@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace _1.DAL.IRepositories
 {
-    internal interface IHoaDonRepository
+    public interface IHoaDonRepository
     {
         bool Add(HoaDon obj);
         bool Update(HoaDon obj);

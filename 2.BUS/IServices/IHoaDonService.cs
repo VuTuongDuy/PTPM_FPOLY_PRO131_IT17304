@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace _2.BUS.IServices
 {
-    internal interface IHoaDonService
+    public interface IHoaDonService
     {
         string Add(ViewHoaDon obj);
         string Update(ViewHoaDon obj);
