@@ -43,11 +43,7 @@ namespace _1.DAL.Context
                 optionsBuilder.UseSqlServer("Data Source=LAPTOP-OF-KHAI\\SQLEXPRESS;Initial Catalog=Data Source=LAPTOP-OF-KHAI\\SQLEXPRESS;Initial Catalog=Duan1;User ID=khainq03;Password=123456");
 =======
 <<<<<<< HEAD
-                optionsBuilder.UseSqlServer("Data Source=LAPTOP-46F72MJA\\SQLEXPRESS;Initial Catalog=Duan1;Persist Security Info=True;User ID=duyvtph24890;Password=123456");
-=======
-                optionsBuilder.UseSqlServer("Data Source=LAPTOP-OF-KHAI\\SQLEXPRESS;Initial Catalog=Data Source=LAPTOP-OF-KHAI\\SQLEXPRESS;Initial Catalog=FINALASS_FPOLYSHOP_FA22_SOF205__SOF2041;User ID=khainq03;Password=123456");
->>>>>>> 1e29c456808ee383064bce2dabc909ead9a8ed7e
->>>>>>> 2c43f13792c1fe3595aceb4fdf32d8adfdf2f6d9
+                
             }
         }
 
