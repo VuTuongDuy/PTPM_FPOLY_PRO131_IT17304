@@ -18,16 +18,9 @@ namespace _2.BUS.Services
         {
             _IChatLieuRepository = new ChatLieuRepository();
         }
-        public bool AddChatLieu(ViewChatLieu obj)
+        public bool AddChatLieu(ChatLieu obj)
         {
-            var ChatLieu = new ChatLieu()
-            {
-                Id = obj.Id,
-                Ma = obj.Ma,
-                Ten = obj.Ten,
-                TrangThai = obj.TrangThai,
-            };
-            _IChatLieuRepository.AddChatLieu(ChatLieu);
+            _IChatLieuRepository.AddChatLieu(obj);
             return true;
         }
 
@@ -37,18 +30,9 @@ namespace _2.BUS.Services
             return true;
         }
 
-        public List<ViewChatLieu> GetViewChatLieu()
+        public List<ChatLieu> GetAllChatLieu()
         {
-            List<ViewChatLieu> _lstViewChatLieu = new List<ViewChatLieu>();
-            _lstViewChatLieu = (from cl in _IChatLieuRepository.GetAllChatLieu()
-                              select new ViewChatLieu()
-                              {
-                                  Id = cl.Id,
-                                  Ma = cl.Ma,
-                                  Ten = cl.Ten,
-                                  TrangThai = cl.TrangThai
-                              }).ToList();
-            return _lstViewChatLieu;
+            return _IChatLieuRepository.GetAllChatLieu();
         }
 
         public bool UpdateChatLieu(ChatLieu obj)

@@ -10,9 +10,9 @@ namespace _2.BUS.IServices
 {
     public interface IChatLieuService
     {
-        bool AddChatLieu(ViewChatLieu obj);
+        bool AddChatLieu(ChatLieu obj);
         bool UpdateChatLieu(ChatLieu obj);
         bool DeleteChatLieu(ChatLieu obj);
-        List<ViewChatLieu> GetViewChatLieu();
+        List<ChatLieu> GetAllChatLieu();
     }
 }
