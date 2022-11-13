@@ -154,7 +154,10 @@
             this.cbx_khongHD.TabIndex = 2;
             this.cbx_khongHD.Text = "Không hoạt động";
             this.cbx_khongHD.UseVisualStyleBackColor = true;
+<<<<<<< HEAD
             this.cbx_khongHD.CheckedChanged += new System.EventHandler(this.cbx_khongHD_CheckedChanged);
+=======
+>>>>>>> d3f6a0910eab86e3e9c5e6f2b3418b8af5af298e
             // 
             // cbx_HoatDong
             // 
@@ -239,6 +242,10 @@
             this.cmb_KieuDang.Name = "cmb_KieuDang";
             this.cmb_KieuDang.Size = new System.Drawing.Size(240, 28);
             this.cmb_KieuDang.TabIndex = 1;
+<<<<<<< HEAD
+=======
+            this.cmb_KieuDang.SelectedIndexChanged += new System.EventHandler(this.comboBox5_SelectedIndexChanged);
+>>>>>>> d3f6a0910eab86e3e9c5e6f2b3418b8af5af298e
             // 
             // cmb_LoaiDe
             // 
@@ -473,6 +480,7 @@
             this.Controls.Add(this.dgrid_ChiTietGiay);
             this.Name = "FrmChiTietGiay";
             this.Text = "FrmChiTietGiay";
+            this.Load += new System.EventHandler(this.FrmChiTietGiay_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgrid_ChiTietGiay)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

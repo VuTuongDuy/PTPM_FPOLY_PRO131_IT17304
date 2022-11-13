@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace _1.DAL.Repositories
 {
-    internal class HoaDonRepository : IHoaDonRepository
+    public class HoaDonRepository : IHoaDonRepository
     {
         private FpolyDBContext _dbContext;
         public HoaDonRepository()

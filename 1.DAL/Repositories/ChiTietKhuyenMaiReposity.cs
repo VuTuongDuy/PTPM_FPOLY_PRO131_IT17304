@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace _1.DAL.Repositories
 {
-    internal class ChiTietKhuyenMaiReposity : IChiTietKhuyenMaiRepository
+    public class ChiTietKhuyenMaiReposity : IChiTietKhuyenMaiRepository
     {
         public FpolyDBContext _dbConText;
         public ChiTietKhuyenMaiReposity()
