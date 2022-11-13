@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Data.SqlClient;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -46,7 +47,30 @@ namespace _3.PL.Views
 
         private void btn_DangNhap_Click(object sender, EventArgs e)
         {
-
+            SqlConnection conn = new SqlConnection(@"Data Source=LAPTOP-OF-KHAI\SQLEXPRESS;Initial Catalog=Duan1;Persist Security Info=True;User ID=khainq03;Password=123456");
+            try
+            {
+                conn.Open();
+                int taiKhoan = int.Parse(txt_tk.Text);
+                string matKhau = txt_mk.Text;
+                string sql = "select Ma,Matkhau from NhanVien where ma='" + taiKhoan + "' and Matkhau='" + matKhau + "'";
+                SqlCommand cmd = new SqlCommand(sql, conn);
+                SqlDataReader dta = cmd.ExecuteReader();
+                if (dta.Read() == true)
+                {
+                    MessageBox.Show("Đăng nhập thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    FrmMain _frmMain = new FrmMain();
+                    _frmMain.ShowDialog();
+                }
+                else
+                {
+                    MessageBox.Show("Đăng nhập thất bại", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }
