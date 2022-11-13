@@ -41,6 +41,7 @@ namespace _2.BUS.Services
         {
             ChiTietGiay ctsp = new ChiTietGiay()
             {
+                Id = Guid.NewGuid(),
                 IdSanPham = obj.IdSP,
                 IdChatLieu = obj.IdChatLieu,
                 IdMauSac = obj.IdMauSac,

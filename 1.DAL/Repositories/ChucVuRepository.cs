@@ -9,7 +9,11 @@ using System.Threading.Tasks;
 
 namespace _1.DAL.Repositories
 {
+<<<<<<< HEAD
     public class ChucVuRepository : IChucVuRepository
+=======
+    public class ChucVuRepository :IChucVuRepository
+>>>>>>> c4def6ee2a2c7398d4e56530640e6575c2c89cd6
     {
         private FpolyDBContext _dbContext;
         public ChucVuRepository()

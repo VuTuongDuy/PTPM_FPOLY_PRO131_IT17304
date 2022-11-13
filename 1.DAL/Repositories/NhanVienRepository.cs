@@ -1,5 +1,6 @@
 ﻿using _1.DAL.Context;
 using _1.DAL.DomainClass;
+using _1.DAL.IRepositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +9,11 @@ using System.Threading.Tasks;
 
 namespace _1.DAL.Repositories
 {
-    public class NhanVienRepository
+<<<<<<< HEAD
+    public class NhanVienRepository:INhanVienRepository
+=======
+    public class NhanVienRepository  : INhanVienRepository
+>>>>>>> d5bd763052f623ea23cdc532b63cb69546c9e707
     {
         private FpolyDBContext _dbContext;
         public NhanVienRepository()

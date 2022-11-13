@@ -13,9 +13,12 @@ namespace _1.DAL.Repositories
     public class ChatLieuRepository : IChatLieuRepository
     {
         private FpolyDBContext _dbContext;
+        
         public ChatLieuRepository()
         {
+            
             _dbContext = new FpolyDBContext();
+            
         }
         public bool AddChatLieu(ChatLieu obj)
         {
