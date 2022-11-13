@@ -120,7 +120,11 @@ namespace _3.PL.Views
 
         private void dgrid_ChatLieu_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+<<<<<<< HEAD
+            
+=======
            
+>>>>>>> c4def6ee2a2c7398d4e56530640e6575c2c89cd6
         }
 
         private void dgrid_ChatLieu_CellClick(object sender, DataGridViewCellEventArgs e)
