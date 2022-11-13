@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace _1.DAL.IRepositories
 {
-    internal interface IChiTietKhuyenMaiRepository
+    public interface IChiTietKhuyenMaiRepository
     {
         bool Add(ChiTietKhuyenMai obj);
         bool Update(ChiTietKhuyenMai obj);
