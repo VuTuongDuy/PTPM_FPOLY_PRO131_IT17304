@@ -43,5 +43,10 @@ namespace _3.PL.Views
         {
             Application.Exit();
         }
+
+        private void btn_DangNhap_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
