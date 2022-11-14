@@ -251,10 +251,7 @@
             this.Controls.Add(this.panel1);
 
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-<<<<<<< HEAD
 
-=======
->>>>>>> bb013a960406df6f8082af025a03452495125107
             this.Name = "FrmDangNhap";
             this.Text = "FrmTest";
             this.Load += new System.EventHandler(this.FrmTest_Load);

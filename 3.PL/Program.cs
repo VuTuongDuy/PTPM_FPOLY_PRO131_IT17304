@@ -19,19 +19,7 @@ namespace _3.PL
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-<<<<<<< HEAD
-
-
-           
-
             Application.Run(new FrmHoaDonChiTiet());
-
-
-
-
-=======
-            Application.Run(new FrmDangNhap());
->>>>>>> bb013a960406df6f8082af025a03452495125107
         }
     }
 }

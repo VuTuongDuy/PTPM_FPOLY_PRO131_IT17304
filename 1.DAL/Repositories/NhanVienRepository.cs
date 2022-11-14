@@ -9,14 +9,10 @@ using System.Threading.Tasks;
 
 namespace _1.DAL.Repositories
 {
-<<<<<<< HEAD
 
 
     public class NhanVienRepository  : INhanVienRepository
 
-=======
-    public class NhanVienRepository  : INhanVienRepository
->>>>>>> bb013a960406df6f8082af025a03452495125107
     {
         private FpolyDBContext _dbContext;
         public NhanVienRepository()

@@ -49,11 +49,9 @@ namespace _2.BUS.Services
                 GiamGia = obj.GiamGia,
                 TrangThai = obj.TrangThai,
             };
-<<<<<<< HEAD
-            //_hoaDonService.Add(HoaDon);
-=======
+
             _iHoaDonRepository.Add(HoaDon);
->>>>>>> bb013a960406df6f8082af025a03452495125107
+
             return "thành công";
         }
 

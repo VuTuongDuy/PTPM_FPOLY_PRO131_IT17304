@@ -54,7 +54,7 @@ namespace _3.PL.Views
             {
                 Id = Guid.NewGuid(),
                 IdHoaDon = x.HoaDon.Id,
-                IdKhuyenMai=x.ChiTietKhuyenMai.Id,
+                
                
             };
             return x;
