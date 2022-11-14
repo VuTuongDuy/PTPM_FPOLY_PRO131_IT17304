@@ -27,11 +27,10 @@ namespace _2.BUS.Services
             _INhanVienRepository = new NhanVienRepository();
             _ikhachHangRepository = new KhachHangRepository();
             _lstHoadon = new List<HoaDon>();
-
-
+            _viewHoaDons = new List<ViewHoaDon>();
         }
 
-        public string Add(HoaDon obj)
+        public string Add(ViewHoaDon obj)
         {
             var HoaDon = new HoaDon()
             {
@@ -49,25 +48,22 @@ namespace _2.BUS.Services
                 Sdt = obj.Sdt,
                 GiamGia = obj.GiamGia,
                 TrangThai = obj.TrangThai,
-
             };
             _iHoaDonRepository.Add(HoaDon);
             return "thành công";
         }
 
-        public string Delete(ViewHoaDon obj)
+        public string Delete(Guid id)
         {
             var temp = _iHoaDonRepository.GetAll().FirstOrDefault(c => c.Id == id);
             _iHoaDonRepository.Delete(temp);
             return "thành công";
         }
 
-<<<<<<< HEAD
-       
-        public List<HoaDon> GetAllChucVu()
+        public List<HoaDon> GetallHoadon()
         {
-            return _hoaDonService.GetAll();
-=======
+            return _iHoaDonRepository.GetAll();
+        }
         public List<ViewHoaDon> GetAll()
         {
             _viewHoaDons = (from hd in _iHoaDonRepository.GetAll()
@@ -75,8 +71,7 @@ namespace _2.BUS.Services
                             join nv in _INhanVienRepository.GetAll() on hd.IdNhanVien equals nv.Id
                             join sp in _ISanPhamRepository.GetAllSanPham() on hd.IdSanOham equals sp.Id
                             select new ViewHoaDon
-                            {
-                               
+                            {       
                                Id = hd.Id,
                                khachhang = kh.Ten,
                                sanpham = sp.Ten,
@@ -91,11 +86,9 @@ namespace _2.BUS.Services
                                Sdt = hd.Sdt,
                                GiamGia =hd.GiamGia,
                                TrangThai = hd.TrangThai
-
-
                             }).ToList();
             return _viewHoaDons;
->>>>>>> 7717df2b40c51f1d2545b12f66d24651841b3b69
+
         }
 
         public ChucVu GetByID(Guid id)
@@ -103,7 +96,7 @@ namespace _2.BUS.Services
             throw new NotImplementedException();
         }
 
-        public string Update(HoaDon obj)
+        public string Update(ViewHoaDon obj)
         {
             var HoaDon = new HoaDon()
             {

@@ -19,10 +19,9 @@ namespace _3.PL.Views
 {
     public partial class FrmHoadon : Form
     {
-        private IHoaDonRepository _iHoadonrepo;
-        private ISanPhamRepository _isanPhamrepo;
-        private IKhachHangRepository _ikhachHangRepository;
-        private INhanVienRepository _inhanVienRepository;
+        private ISanPhamService _iSanphamService;
+        private IKhachHangService _Ikhachhangservice;
+        private INhanVienService _Inhanvienservice;
         private List<ViewHoaDon> _viewHoaDon;
         private IHoaDonService _ihoadonservice;
         private Guid _idhoadon;
@@ -30,9 +29,9 @@ namespace _3.PL.Views
         public FrmHoadon()
         {
             InitializeComponent();
-            _inhanVienRepository = new NhanVienRepository();
-            _ikhachHangRepository = new KhachHangRepository();
-            _iHoadonrepo = new HoaDonRepository();
+            _iSanphamService = new SanPhamService();
+            _Ikhachhangservice = new KhachHangService();
+            _Inhanvienservice = new NhanVienService();
             _viewHoaDon = new List<ViewHoaDon>();
             _ihoadonservice = new HoaDonService();
             _lsthoadon = new List<HoaDon>();
@@ -58,8 +57,8 @@ namespace _3.PL.Views
             dgrid_view.Columns[12].Name = "Giảm GIá";
             dgrid_view.Columns[13].Name = "Trạng Thái";
             dgrid_view.Rows.Clear();
-             
-            foreach (var x in _lsthoadon.OrderBy(c=>c.Ma).ToList())
+            _viewHoaDon = _ihoadonservice.GetAll();
+            foreach (var x in _viewHoaDon)
             {
                 dgrid_view.Rows.Add(x.Id,x.Ma,x.IdKhachHang,x.IdSanOham, x.IdNhanVien,x.TenSp, x.TenNguoiNhan, x.NgayTao,x.NgayGiao,x.NgayThanhToan,x.DiaChi,x.Sdt,x.GiamGia,x.TrangThai);
             };
@@ -67,20 +66,20 @@ namespace _3.PL.Views
         }
         public void LoaddataCombobox()
         {
-            foreach (var x in _ikhachHangRepository.GetAll())
-            {
-                cbx_khachhang.Items.Add(x);
+            //foreach (var x in _ikhachHangRepository.GetAll())
+            //{
+            //    cbx_khachhang.Items.Add(x);
 
-            }
-            foreach (var x in _isanPhamrepo.GetAllSanPham())
-            {
-                cbx_sanpham.Items.Add(x);
+            //}
+            //foreach (var x in _isanPhamrepo.GetAllSanPham())
+            //{
+            //    cbx_sanpham.Items.Add(x);
 
-            }
-            foreach (var x in _inhanVienRepository.GetAll())
-            {
-                cbx_nhanvien.Items.Add(x);
-            }
+            //}
+            //foreach (var x in _inhanVienRepository.GetAll())
+            //{
+            //    cbx_nhanvien.Items.Add(x);
+            //}
         }
 
         private void dgrid_view_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -91,9 +90,9 @@ namespace _3.PL.Views
                 _idhoadon = Guid.Parse(r.Cells[0].Value.ToString());
                 var sp = _ihoadonservice.GetAll().FirstOrDefault(c => c.Id == _idhoadon);
                 tbx_ma.Text = r.Cells[1].Value.ToString();
-                cbx_khachhang.Text = r.Cells[2].Value.ToString();
-                cbx_sanpham.Text = r.Cells[3].Value.ToString();
-                cbx_nhanvien.Text = r.Cells[4].Value.ToString();
+                //cbx_khachhang.Text = r.Cells[2].Value.ToString();
+                //cbx_sanpham.Text = r.Cells[3].Value.ToString();
+                //cbx_nhanvien.Text = r.Cells[4].Value.ToString();
                 tbx_tensanpham.Text = r.Cells[5].Value.ToString();
                 tbx_tennguoinhan.Text = r.Cells[6].Value.ToString();
                 date_ngaytao.Value = Convert.ToDateTime(r.Cells[7].Value);
@@ -120,9 +119,9 @@ namespace _3.PL.Views
                 Sdt = tbx_sdt.Text,
                 GiamGia = tbx_giamgia.Text,
                 TrangThai = Convert.ToInt32(tbx_trangthai.Text),
-                IdSanOham  = cbx_sanpham.Text != null ? _isanPhamrepo.GetAllSanPham().FirstOrDefault(c => c.Ten == cbx_sanpham.Text).Id : null,
-                IdKhachHang = cbx_khachhang.Text != null ? _ikhachHangRepository.GetAll().FirstOrDefault(c=>c.Ten == cbx_khachhang.Text).Id :null,
-                IdNhanVien = cbx_nhanvien.Text != null ? _inhanVienRepository.GetAll().FirstOrDefault(c=>c.Ten == cbx_nhanvien.Text).Id : null,
+                IdSanOham  = cbx_sanpham.Text != null ? _iSanphamService.GetAllSanPham().FirstOrDefault(c => c.Ten == cbx_sanpham.Text).Id : null,
+                IdKhachHang = cbx_khachhang.Text != null ? _Ikhachhangservice.GetAll().FirstOrDefault(c=>c.Ten == cbx_khachhang.Text).Id :null,
+                IdNhanVien = cbx_nhanvien.Text != null ? _Inhanvienservice.GetAll().FirstOrDefault(c=>c.Ten == cbx_nhanvien.Text).Id : null,
 
             };
         }
