@@ -169,5 +169,10 @@ namespace _3.PL.Views
         {
 
         }
+
+        private void FrmHoadon_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

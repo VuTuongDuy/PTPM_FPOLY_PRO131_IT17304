@@ -10,9 +10,10 @@ namespace _2.BUS.IServices
 {
     public interface INhanVienService
     {
-        string Add(NhanVien obj);
-        string Update(NhanVien obj);
-        string Delete(NhanVien obj);
-        List<NhanVien> GetAll();
+        bool AddNhanVien(AddNhanVienView obj);
+        bool UpdateNhanVien(UpdateNhanVienView obj);
+        bool Delete(Guid IdNhanVien);
+        List<ViewNhanVien> GetAll();
+        List <NhanVien> GetAllNhanVien();
     }
 }

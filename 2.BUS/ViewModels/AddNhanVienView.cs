@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace _2.BUS.ViewModels
 {
-    public class ViewNhanVien
+    public class AddNhanVienView
     {
         public Guid? Id { get; set; }
 

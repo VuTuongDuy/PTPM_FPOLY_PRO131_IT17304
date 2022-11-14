@@ -9,10 +9,10 @@ namespace _1.DAL.IRepositories
 {
     public interface INhanVienRepository
     {
-        bool Add(NhanVien obj);
-        bool Update(NhanVien obj);
-        bool Delete(NhanVien obj);
+        bool AddNhanVien(NhanVien obj);
+        bool UpdateNhanVien(NhanVien obj);
+        bool DeleteNhanVien(NhanVien obj);
         NhanVien GetById(Guid id);
-        List<NhanVien> GetAll();
+        List<NhanVien> GetAllNhanVien();
     }
 }

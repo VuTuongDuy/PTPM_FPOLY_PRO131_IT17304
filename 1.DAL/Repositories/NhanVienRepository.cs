@@ -19,7 +19,7 @@ namespace _1.DAL.Repositories
         {
             _dbContext = new FpolyDBContext();
         }
-        public bool Add(NhanVien obj)
+        public bool AddNhanVien(NhanVien obj)
         {
             if (obj == null) return false;
             _dbContext.NhanViens.Add(obj);
@@ -28,7 +28,7 @@ namespace _1.DAL.Repositories
            
         }
 
-        public bool Delete(NhanVien obj)
+        public bool DeleteNhanVien(NhanVien obj)
         {
             if (obj == null) return false;
             var temobj = _dbContext.NhanViens.FirstOrDefault(s => s.Id == obj.Id);
@@ -37,7 +37,8 @@ namespace _1.DAL.Repositories
             return true;
         }
 
-        public List<NhanVien> GetAll()
+
+        public List<NhanVien> GetAllNhanVien()
         {
             return _dbContext.NhanViens.ToList();
         }
@@ -49,7 +50,7 @@ namespace _1.DAL.Repositories
             return _dbContext.NhanViens.FirstOrDefault(s => s.Id == id);
         }
 
-        public bool Update(NhanVien obj)
+        public bool UpdateNhanVien(NhanVien obj)
         {
             if (obj == null) return false;
             var temobj = _dbContext.NhanViens.FirstOrDefault(s => s.Id == obj.Id);

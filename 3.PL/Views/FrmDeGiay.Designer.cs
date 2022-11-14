@@ -29,11 +29,15 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txt_ChieuCao = new System.Windows.Forms.TextBox();
+            this.txt_ChatLieu = new System.Windows.Forms.TextBox();
             this.txt_Ten = new System.Windows.Forms.TextBox();
             this.txt_Ma = new System.Windows.Forms.TextBox();
             this.cbx_KhongHD = new System.Windows.Forms.CheckBox();
             this.cbx_HoatDong = new System.Windows.Forms.CheckBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.btn_TimKiem = new System.Windows.Forms.Button();
@@ -44,10 +48,6 @@
             this.btn_Xoa = new System.Windows.Forms.Button();
             this.btn_Sua = new System.Windows.Forms.Button();
             this.btn_Them = new System.Windows.Forms.Button();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.txt_ChatLieu = new System.Windows.Forms.TextBox();
-            this.txt_ChieuCao = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgrid_DeGiay)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -72,6 +72,20 @@
             this.groupBox1.TabIndex = 8;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Thông tin đế giày";
+            // 
+            // txt_ChieuCao
+            // 
+            this.txt_ChieuCao.Location = new System.Drawing.Point(162, 163);
+            this.txt_ChieuCao.Name = "txt_ChieuCao";
+            this.txt_ChieuCao.Size = new System.Drawing.Size(286, 27);
+            this.txt_ChieuCao.TabIndex = 3;
+            // 
+            // txt_ChatLieu
+            // 
+            this.txt_ChatLieu.Location = new System.Drawing.Point(162, 124);
+            this.txt_ChatLieu.Name = "txt_ChatLieu";
+            this.txt_ChatLieu.Size = new System.Drawing.Size(286, 27);
+            this.txt_ChatLieu.TabIndex = 3;
             // 
             // txt_Ten
             // 
@@ -117,6 +131,24 @@
             this.label3.Size = new System.Drawing.Size(78, 20);
             this.label3.TabIndex = 1;
             this.label3.Text = "Trạng thái:";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(49, 163);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(77, 20);
+            this.label5.TabIndex = 1;
+            this.label5.Text = "Chiều cao:";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(49, 127);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(70, 20);
+            this.label4.TabIndex = 1;
+            this.label4.Text = "Chất liệu:";
             // 
             // label2
             // 
@@ -220,38 +252,6 @@
             this.btn_Them.UseVisualStyleBackColor = true;
             this.btn_Them.Click += new System.EventHandler(this.btn_Them_Click);
             // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(49, 127);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(70, 20);
-            this.label4.TabIndex = 1;
-            this.label4.Text = "Chất liệu:";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(49, 163);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(77, 20);
-            this.label5.TabIndex = 1;
-            this.label5.Text = "Chiều cao:";
-            // 
-            // txt_ChatLieu
-            // 
-            this.txt_ChatLieu.Location = new System.Drawing.Point(162, 124);
-            this.txt_ChatLieu.Name = "txt_ChatLieu";
-            this.txt_ChatLieu.Size = new System.Drawing.Size(286, 27);
-            this.txt_ChatLieu.TabIndex = 3;
-            // 
-            // txt_ChieuCao
-            // 
-            this.txt_ChieuCao.Location = new System.Drawing.Point(162, 163);
-            this.txt_ChieuCao.Name = "txt_ChieuCao";
-            this.txt_ChieuCao.Size = new System.Drawing.Size(286, 27);
-            this.txt_ChieuCao.TabIndex = 3;
-            // 
             // FrmDeGiay
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -264,6 +264,7 @@
             this.Controls.Add(this.groupBox2);
             this.Name = "FrmDeGiay";
             this.Text = "FrmDeGiay";
+            this.Load += new System.EventHandler(this.FrmDeGiay_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgrid_DeGiay)).EndInit();
