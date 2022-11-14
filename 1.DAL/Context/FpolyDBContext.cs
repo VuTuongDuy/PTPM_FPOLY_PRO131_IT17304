@@ -40,14 +40,10 @@ namespace _1.DAL.Context
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
 
-<<<<<<< HEAD
-                optionsBuilder.UseSqlServer("Data Source=LAPTOP-46F72MJA\\SQLEXPRESS;Initial Catalog=Duan1;Persist Security Info=True;User ID=duyvtph24890;Password=123456");
-=======
+                optionsBuilder.UseSqlServer("Data Source=DESKTOP-59BFCFR;Initial Catalog=Duan1;Persist Security Info=True;User ID=ph24903;Password=12345678");
 
-                optionsBuilder.UseSqlServer("Data Source=LAPTOP-OF-KHAI\\SQLEXPRESS;Initial Catalog=Data Source=LAPTOP-OF-KHAI\\SQLEXPRESS;Initial Catalog=Duan1;User ID=khainq03;Password=123456");
 
-                
->>>>>>> 8a4eb8eb40d734f95d89b9f6d46a5eee2c816c8e
+
 
             }
         }
