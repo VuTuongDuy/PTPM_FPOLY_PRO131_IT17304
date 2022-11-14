@@ -31,7 +31,7 @@ namespace _2.BUS.Services
 
         }
 
-        public string Add(ViewHoaDon obj)
+        public string Add(HoaDon obj)
         {
             var HoaDon = new HoaDon()
             {
@@ -55,13 +55,19 @@ namespace _2.BUS.Services
             return "thành công";
         }
 
-        public string Delete(Guid id)
+        public string Delete(ViewHoaDon obj)
         {
             var temp = _iHoaDonRepository.GetAll().FirstOrDefault(c => c.Id == id);
             _iHoaDonRepository.Delete(temp);
             return "thành công";
         }
 
+<<<<<<< HEAD
+       
+        public List<HoaDon> GetAllChucVu()
+        {
+            return _hoaDonService.GetAll();
+=======
         public List<ViewHoaDon> GetAll()
         {
             _viewHoaDons = (from hd in _iHoaDonRepository.GetAll()
@@ -89,6 +95,7 @@ namespace _2.BUS.Services
 
                             }).ToList();
             return _viewHoaDons;
+>>>>>>> 7717df2b40c51f1d2545b12f66d24651841b3b69
         }
 
         public ChucVu GetByID(Guid id)
@@ -96,7 +103,7 @@ namespace _2.BUS.Services
             throw new NotImplementedException();
         }
 
-        public string Update(ViewHoaDon obj)
+        public string Update(HoaDon obj)
         {
             var HoaDon = new HoaDon()
             {

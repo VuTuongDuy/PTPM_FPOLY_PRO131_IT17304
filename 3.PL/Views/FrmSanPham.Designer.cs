@@ -224,6 +224,7 @@
             this.Controls.Add(this.groupBox2);
             this.Name = "FrmSanPham";
             this.Text = "FrmSanPham";
+            this.Load += new System.EventHandler(this.FrmSanPham_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgrid_SanPham)).EndInit();

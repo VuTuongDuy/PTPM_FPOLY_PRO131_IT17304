@@ -258,5 +258,10 @@ namespace _3.PL.Views
                 cbx_HoatDong.Checked = false;
             }
         }
+
+        private void FrmChiTietGiay_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

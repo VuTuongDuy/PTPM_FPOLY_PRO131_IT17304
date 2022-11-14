@@ -12,8 +12,12 @@ namespace _2.BUS.IServices
     {
         string Add(ViewHoaDon obj);
         string Update(ViewHoaDon obj);
-        string Delete(Guid obj);
+        string Delete(ViewHoaDon obj);
         ChucVu GetByID(Guid id);
+<<<<<<< HEAD
+        List<HoaDon> GetAllChucVu();
+=======
         List<ViewHoaDon> GetAll();
+>>>>>>> 7717df2b40c51f1d2545b12f66d24651841b3b69
     }
 }
