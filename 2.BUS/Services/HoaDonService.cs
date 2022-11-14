@@ -75,6 +75,7 @@ namespace _2.BUS.Services
                             {       
                                Id = hd.Id,
                                khachhang = kh.Ten,
+                               sanpham = sp.Ten,
                                nhanvien = nv.Ten,
                                Ma = hd.Ma,
                                TenSp = hd.TenSp,

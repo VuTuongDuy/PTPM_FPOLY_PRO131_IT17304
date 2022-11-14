@@ -16,7 +16,7 @@ namespace _2.BUS.Services
         private IKhachHangRepository _ikhachHangRepository;
         public KhachHangService()
         {
-            _ikhachHangRepository = new KhachHangRepository();
+            //_ikhachHangRepository = new KhachHangRepository();
         }
       
 
