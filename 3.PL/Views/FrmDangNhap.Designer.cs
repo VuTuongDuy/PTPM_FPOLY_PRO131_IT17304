@@ -122,6 +122,7 @@
             this.btn_DangNhap.TabIndex = 8;
             this.btn_DangNhap.Text = "LOGIN";
             this.btn_DangNhap.UseVisualStyleBackColor = false;
+            this.btn_DangNhap.Click += new System.EventHandler(this.btn_DangNhap_Click_1);
             // 
             // pictureBox5
             // 

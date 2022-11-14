@@ -9,8 +9,16 @@ using System.Threading.Tasks;
 
 namespace _1.DAL.Repositories
 {
+<<<<<<< HEAD
 
     public class ChucVuRepository: IChucVuRepository
+=======
+<<<<<<< HEAD
+    public class ChucVuRepository : IChucVuRepository
+=======
+    public class ChucVuRepository :IChucVuRepository
+>>>>>>> c4def6ee2a2c7398d4e56530640e6575c2c89cd6
+>>>>>>> 7717df2b40c51f1d2545b12f66d24651841b3b69
     {
         private FpolyDBContext _dbContext;
         public bool Add(ChucVu obj)

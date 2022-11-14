@@ -47,6 +47,11 @@ namespace _3.PL.Views
 
         private void btn_DangNhap_Click(object sender, EventArgs e)
         {
+            
+        }
+
+        private void btn_DangNhap_Click_1(object sender, EventArgs e)
+        {
             SqlConnection conn = new SqlConnection(@"Data Source=LAPTOP-OF-KHAI\SQLEXPRESS;Initial Catalog=Duan1;Persist Security Info=True;User ID=khainq03;Password=123456");
             try
             {

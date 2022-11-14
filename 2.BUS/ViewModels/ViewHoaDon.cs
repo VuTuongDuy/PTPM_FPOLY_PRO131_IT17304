@@ -1,4 +1,5 @@
-﻿using System;
+﻿using _1.DAL.DomainClass;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,8 +11,11 @@ namespace _2.BUS.ViewModels
     {
         public Guid Id { get; set; }
         public Guid? IdKhachHang { get; set; }
+        public string khachhang { get; set; }
         public Guid? IdSanOham { get; set; }
+        public string sanpham { get; set; }
         public Guid? IdNhanVien { get; set; }
+        public string nhanvien { get; set; }
         public string Ma { get; set; }
         public string TenSp { get; set; }
         public DateTime? NgayTao { get; set; }
