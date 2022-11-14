@@ -53,9 +53,9 @@ namespace _2.BUS.Services
             return "thành công";
         }
 
-        public string Delete(Guid id)
+        public string Delete(Guid obj)
         {
-            var temp = _iHoaDonRepository.GetAll().FirstOrDefault(c => c.Id == id);
+            var temp = _iHoaDonRepository.GetAll().FirstOrDefault(c => c.Id == obj);
             _iHoaDonRepository.Delete(temp);
             return "thành công";
         }
@@ -66,6 +66,7 @@ namespace _2.BUS.Services
         }
         public List<ViewHoaDon> GetAll()
         {
+            List<ViewHoaDon> _viewHoaDons = new List<ViewHoaDon>();
             _viewHoaDons = (from hd in _iHoaDonRepository.GetAll()
                             join kh in _ikhachHangRepository.GetAll() on hd.IdKhachHang equals kh.Id
                             join nv in _INhanVienRepository.GetAll() on hd.IdNhanVien equals nv.Id
@@ -74,7 +75,6 @@ namespace _2.BUS.Services
                             {       
                                Id = hd.Id,
                                khachhang = kh.Ten,
-                               sanpham = sp.Ten,
                                nhanvien = nv.Ten,
                                Ma = hd.Ma,
                                TenSp = hd.TenSp,
@@ -98,25 +98,23 @@ namespace _2.BUS.Services
 
         public string Update(ViewHoaDon obj)
         {
-            var HoaDon = new HoaDon()
-            {
-                Id = obj.Id,
-                IdKhachHang = obj.IdKhachHang,
-                IdNhanVien = obj.IdNhanVien,
-                IdSanOham = obj.IdSanOham,
-                Ma = obj.Ma,
-                TenSp = obj.TenSp,
-                NgayTao = obj.NgayTao,
-                NgayThanhToan = obj.NgayThanhToan,
-                NgayGiao = obj.NgayGiao,
-                TenNguoiNhan = obj.TenNguoiNhan,
-                DiaChi = obj.DiaChi,
-                Sdt = obj.Sdt,
-                GiamGia = obj.GiamGia,
-                TrangThai = obj.TrangThai,
+            var x = _iHoaDonRepository.GetAll().FirstOrDefault(p => p.Id == obj.Id);
+            x.IdKhachHang = obj.IdKhachHang;
+            x.IdNhanVien = obj.IdNhanVien;
+            x.IdSanOham = obj.IdSanOham;
+            x.Ma = obj.Ma;
+            x.TenSp = obj.TenSp;
+            x.NgayTao = obj.NgayTao;
+            x.NgayThanhToan = obj.NgayThanhToan;
+            x.NgayGiao = obj.NgayGiao;
+            x.TenNguoiNhan = obj.TenNguoiNhan;
+            x.DiaChi = obj.DiaChi;
+            x.Sdt = obj.Sdt;
+            x.GiamGia = obj.GiamGia;
+            x.TrangThai = obj.TrangThai;
 
-            };
-            _iHoaDonRepository.Update(HoaDon);
+            
+            _iHoaDonRepository.Update(x);
             return "thành công";
         }
     }

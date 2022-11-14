@@ -45,7 +45,7 @@ namespace _2.BUS.Services
 
         
 
-        List<KhachHang> IKhachHangService.GetAll()
+        public List<KhachHang> GetAll()
         {
           return _ikhachHangRepository.GetAll();
         }

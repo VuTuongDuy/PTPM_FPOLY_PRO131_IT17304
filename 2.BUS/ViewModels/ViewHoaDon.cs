@@ -26,5 +26,9 @@ namespace _2.BUS.ViewModels
         public string Sdt { get; set; }
         public string GiamGia { get; set; }
         public int? TrangThai { get; set; }
+        public NhanVien NhanVien { get; set; }
+        public KhachHang KhachHang { get; set; }
+        public HoaDonChiTiet HoaDonChiTiet { get; set; }
+        public HoaDon HoaDon { get; set; }
     }
 }

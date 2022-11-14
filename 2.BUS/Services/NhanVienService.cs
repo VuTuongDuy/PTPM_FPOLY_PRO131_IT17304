@@ -119,7 +119,7 @@ namespace _2.BUS.Services
             return "Thành công";
         }
 
-        List<NhanVien> INhanVienService.GetAll()
+        public List<NhanVien> GetAll()
         {
             return _iNhanVienRepository.GetAll();
         }

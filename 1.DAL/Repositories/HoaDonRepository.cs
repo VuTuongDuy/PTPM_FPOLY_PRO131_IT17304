@@ -26,9 +26,7 @@ namespace _1.DAL.Repositories
 
         public bool Delete(HoaDon obj)
         {
-           if(obj == null) return false;
-            var temp = _dbContext.HoaDons.FirstOrDefault(c => c.Id == obj.Id);
-            _dbContext.Remove(temp);
+            _dbContext.Remove(obj);
             _dbContext.SaveChanges();
             return true;
         }
@@ -46,22 +44,7 @@ namespace _1.DAL.Repositories
 
         public bool Update(HoaDon obj)
         {
-            if (obj == null) return false;
-            var temp = _dbContext.HoaDons.FirstOrDefault(c => c.Id == obj.Id);
-            temp.Ma = obj.Ma;
-            temp.TenSp = obj.TenSp;
-            temp.NgayGiao = obj.NgayGiao;
-            temp.NgayTao = obj.NgayTao;
-            temp.NgayThanhToan = obj.NgayThanhToan;
-            temp.TenNguoiNhan = obj.TenNguoiNhan;
-            temp.DiaChi = obj.DiaChi;
-            temp.Sdt = obj.Sdt;
-            temp.GiamGia = obj.GiamGia;
-            temp.TrangThai = obj.TrangThai;
-            temp.IdKhachHang = obj.IdKhachHang;
-            temp.IdNhanVien = obj.IdNhanVien;
-            temp.IdSanOham = obj.IdSanOham;
-            _dbContext.HoaDons.Update(temp);
+            _dbContext.Update(obj);
             _dbContext.SaveChanges();
             return true;
         }
