@@ -47,7 +47,7 @@ namespace _2.BUS.Services
                 TrangThai = obj.TrangThai,
 
             };
-            _hoaDonService.Add(HoaDon);
+            //_hoaDonService.Add(HoaDon);
             return "thành công";
         }
 
