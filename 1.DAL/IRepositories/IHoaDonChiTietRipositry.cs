@@ -8,8 +8,12 @@ using System.Threading.Tasks;
 namespace _1.DAL.IRepositories
 {
 
+<<<<<<< HEAD
     public interface IHoaDonChiTietRipositry
 
+=======
+    public  interface IHoaDonChiTietRipositry
+>>>>>>> bb013a960406df6f8082af025a03452495125107
     {
         bool Add(HoaDonChiTiet obj);
         bool Update(HoaDonChiTiet obj);

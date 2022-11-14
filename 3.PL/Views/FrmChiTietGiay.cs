@@ -206,6 +206,7 @@ namespace _3.PL.Views
             DialogResult dialogResult = MessageBox.Show("Bạn chắc chắn muốn clear?", "Thông báo", MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.Yes)
             {
+                LoadData();
             }
             if (dialogResult == DialogResult.No)
             {
@@ -257,6 +258,11 @@ namespace _3.PL.Views
             {
                 cbx_HoatDong.Checked = false;
             }
+        }
+
+        private void FrmChiTietGiay_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -16,84 +16,38 @@ namespace _2.BUS.Services
         private IKhachHangRepository _ikhachHangRepository;
         public KhachHangService()
         {
-            _ikhachHangRepository = new KhachHangRepository();
+            //_ikhachHangRepository = new KhachHangRepository();
         }
-        public bool Add(ViewKhachHang obj)
-        {
-            var kh = new KhachHang()
-            {
-                Id = obj.Id,
-                Ma = obj.Ma,
-                Ten = obj.Ten,
-                TenDem = obj.TenDem,
-                Ho = obj.Ho,
-                NgaySinh = obj.NgaySinh,
-                Sdt = obj.Sdt,
-                DiaChi = obj.DiaChi,
-                QuocGia = obj.QuocGia,
-                TrangThai = obj.TrangThai,
+      
 
-            };
-            _ikhachHangRepository.Add(kh);
+        public bool Add(KhachHang obj)
+        {
+           _ikhachHangRepository.Add(obj);
             return true;
         }
-        public bool Delete(ViewKhachHang obj)
-        {
-            var kh = new KhachHang()
-            {
-                Id = obj.Id,
-                Ma = obj.Ma,
-                Ten = obj.Ten,
-                TenDem = obj.TenDem,
-                Ho = obj.Ho,
-                NgaySinh = obj.NgaySinh,
-                Sdt = obj.Sdt,
-                DiaChi = obj.DiaChi,
-                QuocGia = obj.QuocGia,
-                TrangThai = obj.TrangThai,
 
-            };
-            return _ikhachHangRepository.Delete(kh);
+        
+
+        public bool Delete(KhachHang obj)
+        {
+           _ikhachHangRepository.Delete(obj);
             return true;
 
         }
-        public List<ViewKhachHang> GetAll()
+
+      
+
+        public bool Update(KhachHang obj)
         {
-            List<ViewKhachHang> _lstKhachHang = new List<ViewKhachHang>();
-            _lstKhachHang = (
-                from a in _ikhachHangRepository.GetAll()
-                select new ViewKhachHang()
-                {
-                    Id = a.Id,
-                    Ma = a.Ma,
-                    Ten = a.Ten,
-                    TenDem = a.TenDem,
-                    Ho = a.Ho,
-                    NgaySinh = a.NgaySinh,
-                    Sdt = a.Sdt,
-                    DiaChi = a.DiaChi,
-                    QuocGia = a.QuocGia,
-                    TrangThai= a.TrangThai,
-                }).ToList();
-            return _lstKhachHang;
-        }
-        public bool Update(ViewKhachHang obj)
-        {
-            var kh = new KhachHang()
-            {
-                Id = obj.Id,
-                Ma = obj.Ma,
-                Ten = obj.Ten,
-                TenDem = obj.TenDem,
-                Ho = obj.Ho,
-                NgaySinh = obj.NgaySinh,
-                Sdt = obj.Sdt,
-                DiaChi = obj.DiaChi,
-                QuocGia = obj.QuocGia,
-                TrangThai = obj.TrangThai,
-            };
-            _ikhachHangRepository.Update(kh);
+           _ikhachHangRepository.Update(obj);
             return true;
+        }
+
+        
+
+        public List<KhachHang> GetAll()
+        {
+          return _ikhachHangRepository.GetAll();
         }
     }
 }

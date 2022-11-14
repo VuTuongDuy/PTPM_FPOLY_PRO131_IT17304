@@ -19,28 +19,28 @@ namespace _1.DAL.Repositories
         }
         public bool Add(KhachHang obj)
         {
-            if (obj == null) return false;
 
-            _dBContext.KhachHangs.Add(obj);
+
+            _dBContext.Add(obj);
             _dBContext.SaveChanges();
             return true;
         }
 
         public bool Delete(KhachHang obj)
         {
-            if (obj == null) return false;
-            var temobj = _dBContext.KhachHangs.FirstOrDefault(s => s.Id == obj.Id);
-            _dBContext.Remove(temobj);
+            _dBContext.Remove(obj);
             _dBContext.SaveChanges();
             return true;
 
-           
+
         }
 
         public List<KhachHang> GetAll()
         {
             return _dBContext.KhachHangs.ToList();
         }
+
+       
 
         public KhachHang GetById(Guid id)
         {
