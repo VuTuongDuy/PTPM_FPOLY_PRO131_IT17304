@@ -63,7 +63,7 @@
             this.dgrid_ChatLieu.Size = new System.Drawing.Size(1118, 206);
             this.dgrid_ChatLieu.TabIndex = 0;
             this.dgrid_ChatLieu.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgrid_ChatLieu_CellClick);
-            this.dgrid_ChatLieu.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgrid_ChatLieu_CellContentClick);
+           
             // 
             // txt_TimKiem
             // 
