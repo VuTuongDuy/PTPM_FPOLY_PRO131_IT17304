@@ -72,6 +72,7 @@
             this.btn_them.TabIndex = 0;
             this.btn_them.Text = "Thêm";
             this.btn_them.UseVisualStyleBackColor = true;
+            this.btn_them.Click += new System.EventHandler(this.btn_them_Click);
             // 
             // btn_sua
             // 
@@ -83,6 +84,7 @@
             this.btn_sua.TabIndex = 1;
             this.btn_sua.Text = "Sửa";
             this.btn_sua.UseVisualStyleBackColor = true;
+            this.btn_sua.Click += new System.EventHandler(this.btn_sua_Click);
             // 
             // btn_xoa
             // 
@@ -94,6 +96,7 @@
             this.btn_xoa.TabIndex = 2;
             this.btn_xoa.Text = "Xóa";
             this.btn_xoa.UseVisualStyleBackColor = true;
+            this.btn_xoa.Click += new System.EventHandler(this.btn_xoa_Click);
             // 
             // btn_lammoi
             // 
@@ -117,6 +120,7 @@
             this.dgrid_view.RowTemplate.Height = 25;
             this.dgrid_view.Size = new System.Drawing.Size(1240, 325);
             this.dgrid_view.TabIndex = 4;
+            this.dgrid_view.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgrid_view_CellClick);
             // 
             // cbx_khachhang
             // 
@@ -177,7 +181,6 @@
             this.label4.Size = new System.Drawing.Size(29, 15);
             this.label4.TabIndex = 13;
             this.label4.Text = "SDT:";
-         
             // 
             // tbx_sdt
             // 
@@ -201,7 +204,6 @@
             this.label5.Size = new System.Drawing.Size(48, 15);
             this.label5.TabIndex = 15;
             this.label5.Text = "Địa Chỉ:";
-          
             // 
             // tbx_tennguoinhan
             // 
@@ -369,7 +371,6 @@
             this.Controls.Add(this.btn_them);
             this.Name = "FrmHoadon";
             this.Text = "FrmHoadon";
-            
             ((System.ComponentModel.ISupportInitialize)(this.dgrid_view)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

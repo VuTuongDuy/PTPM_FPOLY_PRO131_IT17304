@@ -26,7 +26,9 @@ namespace _2.BUS.Services
             _ISanPhamRepository = new SanPhamRepository();
             _INhanVienRepository = new NhanVienRepository();
             _ikhachHangRepository = new KhachHangRepository();
-            
+            _lstHoadon = new List<HoaDon>();
+
+
         }
 
         public string Add(ViewHoaDon obj)
@@ -53,33 +55,16 @@ namespace _2.BUS.Services
             return "thành công";
         }
 
-        public string Delete(ViewHoaDon obj)
+        public string Delete(Guid id)
         {
-            var HoaDon = new HoaDon()
-            {
-                Id = obj.Id,
-                IdKhachHang = obj.IdKhachHang,
-                IdNhanVien = obj.IdNhanVien,
-                IdSanOham = obj.IdSanOham,
-                Ma = obj.Ma,
-                TenSp = obj.TenSp,
-                NgayTao = obj.NgayTao,
-                NgayThanhToan = obj.NgayThanhToan,
-                NgayGiao = obj.NgayGiao,
-                TenNguoiNhan = obj.TenNguoiNhan,
-                DiaChi = obj.DiaChi,
-                Sdt = obj.Sdt,
-                GiamGia = obj.GiamGia,
-                TrangThai = obj.TrangThai,
-
-            };
-            _iHoaDonRepository.Delete(HoaDon);
+            var temp = _iHoaDonRepository.GetAll().FirstOrDefault(c => c.Id == id);
+            _iHoaDonRepository.Delete(temp);
             return "thành công";
         }
 
         public List<ViewHoaDon> GetAll()
         {
-            _viewHoaDons = (from hd in GetAll()
+            _viewHoaDons = (from hd in _iHoaDonRepository.GetAll()
                             join kh in _ikhachHangRepository.GetAll() on hd.IdKhachHang equals kh.Id
                             join nv in _INhanVienRepository.GetAll() on hd.IdNhanVien equals nv.Id
                             join sp in _ISanPhamRepository.GetAllSanPham() on hd.IdSanOham equals sp.Id

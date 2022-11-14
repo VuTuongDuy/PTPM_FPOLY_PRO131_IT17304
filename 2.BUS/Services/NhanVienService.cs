@@ -15,14 +15,15 @@ namespace _2.BUS.Services
     {
         private INhanVienRepository _iNhanVienRepository;
         private IChucVuRepository _ichucVuRepository;
-        //private IHoaDonRepository _hoaDonRepository;
+        private IHoaDonRepository _hoaDonRepository;
         
         public NhanVienService()
         {
-            //_iNhanVienRepository = new NhanVienRepository();
-            //_ichucVuRepository = new ChucVuRepository();
-            
-            
+            _iNhanVienRepository = new NhanVienRepository();
+           _ichucVuRepository = new ChucVuRepository();
+            _hoaDonRepository = new HoaDonRepository();
+
+
         }
 
         public string Add(ViewNhanVien obj)
