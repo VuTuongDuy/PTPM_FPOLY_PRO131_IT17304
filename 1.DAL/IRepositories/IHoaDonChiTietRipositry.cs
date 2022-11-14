@@ -7,7 +7,8 @@ using System.Threading.Tasks;
 
 namespace _1.DAL.IRepositories
 {
-    public interface IHoaDonChiTietRipositry
+
+    public  interface IHoaDonChiTietRipositry
     {
         bool Add(HoaDonChiTiet obj);
         bool Update(HoaDonChiTiet obj);

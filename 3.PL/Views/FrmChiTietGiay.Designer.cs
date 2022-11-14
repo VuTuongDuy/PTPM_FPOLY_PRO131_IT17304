@@ -155,9 +155,7 @@
             this.cbx_khongHD.Text = "Không hoạt động";
             this.cbx_khongHD.UseVisualStyleBackColor = true;
             this.cbx_khongHD.CheckedChanged += new System.EventHandler(this.cbx_khongHD_CheckedChanged);
-            // 
-            // cbx_HoatDong
-            // 
+
             this.cbx_HoatDong.AutoSize = true;
             this.cbx_HoatDong.Location = new System.Drawing.Point(548, 263);
             this.cbx_HoatDong.Name = "cbx_HoatDong";

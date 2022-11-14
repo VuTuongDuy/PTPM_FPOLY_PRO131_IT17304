@@ -14,17 +14,20 @@ namespace _2.BUS.Services
 {
     public class HoaDonService : IHoaDonService
     {
-        //private IHoaDonRepository _hoaDonService;
+        private IHoaDonRepository _iHoaDonRepository;
         private INhanVienRepository _INhanVienRepository;
         private ISanPhamRepository _ISanPhamRepository;
         private IKhachHangRepository _ikhachHangRepository;
-        
+        private List<HoaDon> _lstHoadon;
+        private List<ViewHoaDon> _viewHoaDons;
         public HoaDonService()
         {
+            _iHoaDonRepository = new HoaDonRepository();
             _ISanPhamRepository = new SanPhamRepository();
-           // _INhanVienRepository = new NhanVienRepository();
-            //_ikhachHangRepository = new KhachHangRepository();
-            
+            _INhanVienRepository = new NhanVienRepository();
+            _ikhachHangRepository = new KhachHangRepository();
+            _lstHoadon = new List<HoaDon>();
+            _viewHoaDons = new List<ViewHoaDon>();
         }
 
         public string Add(ViewHoaDon obj)
@@ -45,39 +48,47 @@ namespace _2.BUS.Services
                 Sdt = obj.Sdt,
                 GiamGia = obj.GiamGia,
                 TrangThai = obj.TrangThai,
-
             };
-            //_hoaDonService.Add(HoaDon);
+            _iHoaDonRepository.Add(HoaDon);
             return "thành công";
         }
 
-        public string Delete(ViewHoaDon obj)
+        public string Delete(Guid id)
         {
-            var HoaDon = new HoaDon()
-            {
-                Id = obj.Id,
-                IdKhachHang = obj.IdKhachHang,
-                IdNhanVien = obj.IdNhanVien,
-                IdSanOham = obj.IdSanOham,
-                Ma = obj.Ma,
-                TenSp = obj.TenSp,
-                NgayTao = obj.NgayTao,
-                NgayThanhToan = obj.NgayThanhToan,
-                NgayGiao = obj.NgayGiao,
-                TenNguoiNhan = obj.TenNguoiNhan,
-                DiaChi = obj.DiaChi,
-                Sdt = obj.Sdt,
-                GiamGia = obj.GiamGia,
-                TrangThai = obj.TrangThai,
-
-            };
-           
+            var temp = _iHoaDonRepository.GetAll().FirstOrDefault(c => c.Id == id);
+            _iHoaDonRepository.Delete(temp);
             return "thành công";
         }
 
-        public List<ViewHoaDon> GetAllChucVu()
+        public List<HoaDon> GetallHoadon()
         {
-            throw new NotImplementedException();
+            return _iHoaDonRepository.GetAll();
+        }
+        public List<ViewHoaDon> GetAll()
+        {
+            _viewHoaDons = (from hd in _iHoaDonRepository.GetAll()
+                            join kh in _ikhachHangRepository.GetAll() on hd.IdKhachHang equals kh.Id
+                            join nv in _INhanVienRepository.GetAll() on hd.IdNhanVien equals nv.Id
+                            join sp in _ISanPhamRepository.GetAllSanPham() on hd.IdSanOham equals sp.Id
+                            select new ViewHoaDon
+                            {       
+                               //Id = hd.Id,
+                               //khachhang = kh.Ten,
+                               //sanpham = sp.Ten,
+                               //nhanvien = nv.Ten,
+                               Ma = hd.Ma,
+                               TenSp = hd.TenSp,
+                               NgayGiao = hd.NgayTao,
+                               NgayThanhToan = hd.NgayThanhToan,
+                               NgayTao = hd.NgayTao,
+                               TenNguoiNhan = hd.TenNguoiNhan,
+                               DiaChi = hd.DiaChi,
+                               Sdt = hd.Sdt,
+                               GiamGia =hd.GiamGia,
+                               TrangThai = hd.TrangThai
+                            }).ToList();
+            return _viewHoaDons;
+
         }
 
         public ChucVu GetByID(Guid id)
@@ -105,7 +116,7 @@ namespace _2.BUS.Services
                 TrangThai = obj.TrangThai,
 
             };
-            
+            _iHoaDonRepository.Update(HoaDon);
             return "thành công";
         }
     }

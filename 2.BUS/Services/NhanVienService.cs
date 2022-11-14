@@ -15,19 +15,21 @@ namespace _2.BUS.Services
     {
         private INhanVienRepository _iNhanVienRepository;
         private IChucVuRepository _ichucVuRepository;
-        //private IHoaDonRepository _hoaDonRepository;
+        private IHoaDonRepository _hoaDonRepository;
         
         public NhanVienService()
         {
-            //_iNhanVienRepository = new NhanVienRepository();
-            //_ichucVuRepository = new ChucVuRepository();
-            
-            
+            _iNhanVienRepository = new NhanVienRepository();
+           _ichucVuRepository = new ChucVuRepository();
+            _hoaDonRepository = new HoaDonRepository();
+
+
         }
 
-        public string Add(ViewNhanVien obj)
-        {
+        
 
+        public string Add(NhanVien obj)
+        {
             var nv = new NhanVien()
             {
                 Id = obj.Id,
@@ -40,14 +42,15 @@ namespace _2.BUS.Services
                 DiaChi = obj.DiaChi,
                 Sdt = obj.Sdt,
                 MatKhau = obj.MatKhau,
-                IdChucVu= obj.IdChucVu,
+                IdChucVu = obj.IdChucVu,
                 TrangThai = obj.TrangThai,
             };
             _iNhanVienRepository.Add(nv);
             return "Thành công";
         }
 
-        public string Delete(ViewNhanVien obj)
+        
+        public string Delete(NhanVien obj)
         {
             var vnv = new NhanVien()
             {
@@ -69,33 +72,56 @@ namespace _2.BUS.Services
             return "Thành công";
         }
 
-        public List<ViewNhanVien> GetAll()
+        //public List<ViewNhanVien> GetAll()
+        //{
+        //    List<ViewNhanVien> _lstNhanVien = new List<ViewNhanVien>();
+        //    _lstNhanVien = (from nv in _iNhanVienRepository.GetAll()
+        //                    join cv in _ichucVuRepository.GetAll() on nv.IdChucVu equals cv.Id
+        //                    select new ViewNhanVien
+        //                    {
+        //                        Id = nv.Id,
+        //                        Ma = nv.Ma,
+        //                        Ten = nv.Ten,
+        //                        TenDem = nv.TenDem,
+        //                        Ho = nv.Ho,
+        //                        GioiTinh = nv.GioiTinh,
+        //                        NgaySinh = nv.NgaySinh,
+        //                        DiaChi = nv.DiaChi,
+        //                        Sdt = nv.Sdt,
+        //                        MatKhau = nv.MatKhau,
+        //                        IdChucVu = nv.IdChucVu,
+        //                        TrangThai = nv.TrangThai,
+
+        //                    }).ToList();
+        //    return _lstNhanVien;
+        //}
+
+    
+
+        public string Update(NhanVien obj)
         {
-            List<ViewNhanVien> _lstNhanVien = new List<ViewNhanVien>();
-            _lstNhanVien = (from nv in _iNhanVienRepository.GetAll()
-                            join cv in _ichucVuRepository.GetAll() on nv.IdChucVu equals cv.Id
-                            select new ViewNhanVien
-                            {
-                                Id = nv.Id,
-                                Ma = nv.Ma,
-                                Ten = nv.Ten,
-                                TenDem = nv.TenDem,
-                                Ho = nv.Ho,
-                                GioiTinh = nv.GioiTinh,
-                                NgaySinh = nv.NgaySinh,
-                                DiaChi = nv.DiaChi,
-                                Sdt = nv.Sdt,
-                                MatKhau = nv.MatKhau,
-
-                                TrangThai = nv.TrangThai,
-
-                            }).ToList();
-            return _lstNhanVien;
+            var vnv = new NhanVien()
+            {
+                Id = obj.Id,
+                Ma = obj.Ma,
+                Ten = obj.Ten,
+                TenDem = obj.TenDem,
+                Ho = obj.Ho,
+                GioiTinh = obj.GioiTinh,
+                NgaySinh = obj.NgaySinh,
+                DiaChi = obj.DiaChi,
+                Sdt = obj.Sdt,
+                MatKhau = obj.MatKhau,
+                IdChucVu = obj.IdChucVu,
+                TrangThai = obj.TrangThai,
+            };
+            _iNhanVienRepository.Update(vnv);
+            return "Thành công";
         }
 
-        public string Update(ViewNhanVien obj)
+        List<NhanVien> INhanVienService.GetAll()
         {
-            throw new NotImplementedException();
+            return _iNhanVienRepository.GetAll();
         }
     }
    

@@ -249,6 +249,8 @@
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(1294, 613);
             this.Controls.Add(this.panel1);
+
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "FrmDangNhap";
             this.Text = "FrmTest";
             this.Load += new System.EventHandler(this.FrmTest_Load);
