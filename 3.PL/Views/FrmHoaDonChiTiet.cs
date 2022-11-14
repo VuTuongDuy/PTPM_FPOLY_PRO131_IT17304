@@ -53,7 +53,7 @@ namespace _3.PL.Views
             x.HoaDonChiTiet = new _1.DAL.DomainClass.HoaDonChiTiet()
             {
                 Id = Guid.NewGuid(),
-                IdHoaDon = x.HoaDon.Id,
+                
                 
                
             };
