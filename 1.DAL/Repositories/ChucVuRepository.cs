@@ -9,28 +9,21 @@ using System.Threading.Tasks;
 
 namespace _1.DAL.Repositories
 {
-<<<<<<< HEAD
+
     public class ChucVuRepository: IChucVuRepository
-=======
-    public class ChucVuRepository :IChucVuRepository
->>>>>>> d5bd763052f623ea23cdc532b63cb69546c9e707
     {
         private FpolyDBContext _dbContext;
-        public ChucVuRepository()
-        {
-            _dbContext = new FpolyDBContext();
-        }
         public bool Add(ChucVu obj)
         {
+
             if (obj == null) return false;
             _dbContext.ChucVus.Add(obj);
             _dbContext.SaveChanges();
             return true;
         }
+
         public bool Delete(ChucVu obj)
         {
-
-
             if (obj == null) return false;
             var temobj = _dbContext.ChiTietGiays.FirstOrDefault(s => s.Id == obj.Id);
 
@@ -61,6 +54,8 @@ namespace _1.DAL.Repositories
             _dbContext.SaveChanges();
             return true;
         }
+
+     
 
     }
 }

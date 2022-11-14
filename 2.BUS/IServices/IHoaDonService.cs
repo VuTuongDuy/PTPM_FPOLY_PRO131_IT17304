@@ -10,10 +10,10 @@ namespace _2.BUS.IServices
 {
     public interface IHoaDonService
     {
-        string Add(ViewHoaDon obj);
-        string Update(ViewHoaDon obj);
-        string Delete(ViewHoaDon obj);
+        string Add(HoaDon obj);
+        string Update(HoaDon obj);
+        string Delete(HoaDon obj);
         ChucVu GetByID(Guid id);
-        List<ViewHoaDon> GetAllChucVu();
+        List<HoaDon> GetAllChucVu();
     }
 }

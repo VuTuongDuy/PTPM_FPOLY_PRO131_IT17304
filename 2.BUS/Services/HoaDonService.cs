@@ -27,7 +27,7 @@ namespace _2.BUS.Services
             
         }
 
-        public string Add(ViewHoaDon obj)
+        public string Add(HoaDon obj)
         {
             var HoaDon = new HoaDon()
             {
@@ -51,7 +51,7 @@ namespace _2.BUS.Services
             return "thành công";
         }
 
-        public string Delete(ViewHoaDon obj)
+        public string Delete(HoaDon obj)
         {
             var HoaDon = new HoaDon()
             {
@@ -75,9 +75,10 @@ namespace _2.BUS.Services
             return "thành công";
         }
 
-        public List<ViewHoaDon> GetAllChucVu()
+       
+        public List<HoaDon> GetAllChucVu()
         {
-            throw new NotImplementedException();
+            return _hoaDonService.GetAll();
         }
 
         public ChucVu GetByID(Guid id)
@@ -85,7 +86,7 @@ namespace _2.BUS.Services
             throw new NotImplementedException();
         }
 
-        public string Update(ViewHoaDon obj)
+        public string Update(HoaDon obj)
         {
             var HoaDon = new HoaDon()
             {
