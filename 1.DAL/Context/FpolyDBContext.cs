@@ -23,6 +23,8 @@ namespace _1.DAL.Context
         public virtual DbSet<ChiTietKhuyenMai> ChiTietKhuyenMais { get; set; }
         public virtual DbSet<ChucVu> ChucVus { get; set; }
         public virtual DbSet<DeGiay> DeGiays { get; set; }
+        public virtual DbSet<GioHang> GioHangs { get; set; }
+        public virtual DbSet<GioHangChiTiet> GioHangChiTiets { get; set; }
         public virtual DbSet<HoaDon> HoaDons { get; set; }
         public virtual DbSet<HoaDonChiTiet> HoaDonChiTiets { get; set; }
         public virtual DbSet<KhachHang> KhachHangs { get; set; }
@@ -38,12 +40,10 @@ namespace _1.DAL.Context
         {
             if (!optionsBuilder.IsConfigured)
             {
-
-                optionsBuilder.UseSqlServer("Data Source=DESKTOP-59BFCFR;Initial Catalog=Duan1;Persist Security Info=True;User ID=ph24903;Password=12345678");
-
+#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
+                optionsBuilder.UseSqlServer("Data Source=LAPTOP-OF-KHAI\\SQLEXPRESS;Initial Catalog=Duan1;Persist Security Info=True;User ID=khainq03;Password=123456");
             }
         }
-    
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -120,6 +120,37 @@ namespace _1.DAL.Context
             modelBuilder.Entity<DeGiay>(entity =>
             {
                 entity.Property(e => e.Id).ValueGeneratedNever();
+            });
+
+            modelBuilder.Entity<GioHang>(entity =>
+            {
+                entity.Property(e => e.Id).ValueGeneratedNever();
+
+                entity.Property(e => e.Ma).IsUnicode(false);
+
+                entity.Property(e => e.Sdt).IsUnicode(false);
+
+                entity.Property(e => e.TenNguoiNhan).IsUnicode(false);
+
+                entity.HasOne(d => d.IdNhanVienNavigation)
+                    .WithMany(p => p.GioHangs)
+                    .HasForeignKey(d => d.IdNhanVien)
+                    .HasConstraintName("FK_GioHang_NhanVien");
+            });
+
+            modelBuilder.Entity<GioHangChiTiet>(entity =>
+            {
+                entity.Property(e => e.Id).ValueGeneratedNever();
+
+                entity.HasOne(d => d.IdChiTietGiayNavigation)
+                    .WithMany(p => p.GioHangChiTiets)
+                    .HasForeignKey(d => d.IdChiTietGiay)
+                    .HasConstraintName("FK_GioHangChiTiet_ChiTietGiay");
+
+                entity.HasOne(d => d.IdGioHangNavigation)
+                    .WithMany(p => p.GioHangChiTiets)
+                    .HasForeignKey(d => d.IdGioHang)
+                    .HasConstraintName("FK_GioHangChiTiet");
             });
 
             modelBuilder.Entity<HoaDon>(entity =>

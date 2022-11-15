@@ -13,6 +13,7 @@ namespace _1.DAL.DomainClass
     {
         public NhanVien()
         {
+            GioHangs = new HashSet<GioHang>();
             HoaDons = new HashSet<HoaDon>();
         }
 
@@ -45,6 +46,8 @@ namespace _1.DAL.DomainClass
         [ForeignKey(nameof(IdChucVu))]
         [InverseProperty(nameof(ChucVu.NhanViens))]
         public virtual ChucVu IdChucVuNavigation { get; set; }
+        [InverseProperty(nameof(GioHang.IdNhanVienNavigation))]
+        public virtual ICollection<GioHang> GioHangs { get; set; }
         [InverseProperty(nameof(HoaDon.IdNhanVienNavigation))]
         public virtual ICollection<HoaDon> HoaDons { get; set; }
     }
