@@ -10,7 +10,6 @@ namespace _2.BUS.IServices
 {
     public interface IHoaDonService
     {
-
         string Add(ViewHoaDon obj);
         string Update(ViewHoaDon obj);
         string Delete(Guid obj);

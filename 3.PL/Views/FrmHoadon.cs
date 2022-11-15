@@ -54,11 +54,12 @@ namespace _3.PL.Views
             dgrid_view.Columns[11].Name = "Giảm GIá";
             dgrid_view.Columns[12].Name = "Trạng Thái";
             dgrid_view.Rows.Clear();
-            foreach (var x in _ihoadonservice.GetallHoadon())
+            foreach (var x in _ihoadonservice.GetAll())
             {
-                var kh = _Ikhachhangservice.GetAll().FirstOrDefault(c => c.Id == x.IdKhachHang);
-                var nv = _Inhanvienservice.GetAllNhanVien().FirstOrDefault(c => c.Id == x.IdNhanVien);
-                dgrid_view.Rows.Add(x.Id,x.Ma,kh.Ten,nv.Ten,x.TenSp,x.TenNguoiNhan,x.NgayTao,x.NgayGiao,x.NgayThanhToan,x.DiaChi,x.Sdt,x.GiamGia,x.TrangThai);
+                dgrid_view.Rows.Add(x.Id, x.Ma, x.khachhang, x.nhanvien, x.TenSp, x.TenNguoiNhan, x.NgayTao, x.NgayGiao, x.NgayThanhToan, x.DiaChi, x.Sdt, x.GiamGia, x.TrangThai);
+                //var kh = _Ikhachhangservice.GetAll().FirstOrDefault(c => c.Id == x.IdKhachHang);
+                //var nv = _Inhanvienservice.GetAllNhanVien().FirstOrDefault(c => c.Id == x.IdNhanVien);
+                //dgrid_view.Rows.Add(x.Id,x.Ma,kh.Ten,nv.Ten,x.TenSp,x.TenNguoiNhan,x.NgayTao,x.NgayGiao,x.NgayThanhToan,x.DiaChi,x.Sdt,x.GiamGia,x.TrangThai);
             };
 
         }
@@ -83,7 +84,7 @@ namespace _3.PL.Views
             {
                 DataGridViewRow r = dgrid_view.Rows[e.RowIndex];
                 _idhoadon = Guid.Parse(r.Cells[0].Value.ToString());
-                var sp = _ihoadonservice.GetAll().FirstOrDefault(c => c.HoaDon.Id == _idhoadon);
+                var hd = _ihoadonservice.GetAll().FirstOrDefault(c =>c.Id == _idhoadon);
                 tbx_ma.Text = r.Cells[1].Value.ToString();
                 cbx_khachhang.Text = r.Cells[2].Value.ToString();
                 //cbx_sanpham.Text = r.Cells[3].Value.ToString();
@@ -96,7 +97,8 @@ namespace _3.PL.Views
                 tbx_diachi.Text = r.Cells[9].Value.ToString();
                 tbx_sdt.Text = r.Cells[10].Value.ToString();
                 tbx_giamgia.Text = r.Cells[11].Value.ToString();
-               // tbx_trangthai.Text = r.Cells[12].Value.ToString();
+                rbtn_hoatdong.Checked = hd.TrangThai == 1;
+                rbtn_khonghoatdong.Checked = hd.TrangThai == 0;
             }
         }
         public ViewHoaDon dataadd()
@@ -137,11 +139,28 @@ namespace _3.PL.Views
 
         private void btn_sua_Click(object sender, EventArgs e)
         {
-            DialogResult dialogResult = MessageBox.Show("Bạn chắc chắn muốn xóa?", "Thông báo", MessageBoxButtons.YesNo);
+            DialogResult dialogResult = MessageBox.Show("Bạn chắc chắn muốn Sửa?", "Thông báo", MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.Yes)
             {
-                //_ihoadonservice.Update();
-                MessageBox.Show("Xóa thành công");
+                ViewHoaDon hoadonview = new ViewHoaDon()
+                {
+                    Id = _idhoadon,
+                    Ma = dataadd().Ma,
+                    TenSp = dataadd().TenSp,
+                    TenNguoiNhan = dataadd().TenNguoiNhan,
+                    NgayGiao = dataadd().NgayGiao,
+                    NgayTao = dataadd().NgayTao,
+                    NgayThanhToan = dataadd().NgayThanhToan,
+                    DiaChi = dataadd().DiaChi,
+                    Sdt = dataadd().Sdt,
+                    GiamGia = dataadd().GiamGia,
+                    TrangThai = dataadd().TrangThai,
+                    IdKhachHang = dataadd().IdKhachHang,
+                    IdNhanVien = dataadd().IdNhanVien,
+
+                };
+                _ihoadonservice.Update(hoadonview);
+                MessageBox.Show("Sửa thành công");
                 Loaddata();
             }
             if (dialogResult == DialogResult.No)

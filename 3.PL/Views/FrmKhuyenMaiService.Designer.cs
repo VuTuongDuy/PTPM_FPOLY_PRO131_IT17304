@@ -33,10 +33,10 @@
             this.btn_sua = new System.Windows.Forms.Button();
             this.btn_them = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.tbx_ma = new System.Windows.Forms.TextBox();
+            this.tbx_ten = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.tbx_mota = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.rbtn_hoatdong = new System.Windows.Forms.RadioButton();
@@ -55,6 +55,7 @@
             this.btn_lammoi.TabIndex = 7;
             this.btn_lammoi.Text = "Làm Mới";
             this.btn_lammoi.UseVisualStyleBackColor = true;
+            this.btn_lammoi.Click += new System.EventHandler(this.btn_lammoi_Click);
             // 
             // btn_xoa
             // 
@@ -66,6 +67,7 @@
             this.btn_xoa.TabIndex = 6;
             this.btn_xoa.Text = "Xóa";
             this.btn_xoa.UseVisualStyleBackColor = true;
+            this.btn_xoa.Click += new System.EventHandler(this.btn_xoa_Click);
             // 
             // btn_sua
             // 
@@ -77,6 +79,7 @@
             this.btn_sua.TabIndex = 5;
             this.btn_sua.Text = "Sửa";
             this.btn_sua.UseVisualStyleBackColor = true;
+            this.btn_sua.Click += new System.EventHandler(this.btn_sua_Click);
             // 
             // btn_them
             // 
@@ -88,6 +91,7 @@
             this.btn_them.TabIndex = 4;
             this.btn_them.Text = "Thêm";
             this.btn_them.UseVisualStyleBackColor = true;
+            this.btn_them.Click += new System.EventHandler(this.btn_them_Click);
             // 
             // label1
             // 
@@ -98,19 +102,19 @@
             this.label1.TabIndex = 8;
             this.label1.Text = "Mã:";
             // 
-            // textBox1
+            // tbx_ma
             // 
-            this.textBox1.Location = new System.Drawing.Point(83, 227);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(365, 23);
-            this.textBox1.TabIndex = 9;
+            this.tbx_ma.Location = new System.Drawing.Point(83, 227);
+            this.tbx_ma.Name = "tbx_ma";
+            this.tbx_ma.Size = new System.Drawing.Size(365, 23);
+            this.tbx_ma.TabIndex = 9;
             // 
-            // textBox2
+            // tbx_ten
             // 
-            this.textBox2.Location = new System.Drawing.Point(83, 293);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(365, 23);
-            this.textBox2.TabIndex = 11;
+            this.tbx_ten.Location = new System.Drawing.Point(83, 293);
+            this.tbx_ten.Name = "tbx_ten";
+            this.tbx_ten.Size = new System.Drawing.Size(365, 23);
+            this.tbx_ten.TabIndex = 11;
             // 
             // label2
             // 
@@ -121,12 +125,12 @@
             this.label2.TabIndex = 10;
             this.label2.Text = "Tên:";
             // 
-            // textBox3
+            // tbx_mota
             // 
-            this.textBox3.Location = new System.Drawing.Point(83, 354);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(365, 23);
-            this.textBox3.TabIndex = 13;
+            this.tbx_mota.Location = new System.Drawing.Point(83, 354);
+            this.tbx_mota.Name = "tbx_mota";
+            this.tbx_mota.Size = new System.Drawing.Size(365, 23);
+            this.tbx_mota.TabIndex = 13;
             // 
             // label3
             // 
@@ -179,6 +183,7 @@
             this.dgrid_view.RowTemplate.Height = 25;
             this.dgrid_view.Size = new System.Drawing.Size(797, 204);
             this.dgrid_view.TabIndex = 17;
+            this.dgrid_view.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgrid_view_CellClick);
             // 
             // FrmKhuyenMaiService
             // 
@@ -189,11 +194,11 @@
             this.Controls.Add(this.rbtn_khonghoatdong);
             this.Controls.Add(this.rbtn_hoatdong);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.textBox3);
+            this.Controls.Add(this.tbx_mota);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.tbx_ten);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.tbx_ma);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btn_lammoi);
             this.Controls.Add(this.btn_xoa);
@@ -214,10 +219,10 @@
         private System.Windows.Forms.Button btn_sua;
         private System.Windows.Forms.Button btn_them;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox tbx_ma;
+        private System.Windows.Forms.TextBox tbx_ten;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox tbx_mota;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.RadioButton rbtn_hoatdong;

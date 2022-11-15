@@ -16,14 +16,12 @@ namespace _2.BUS.Services
     {
         private IHoaDonRepository _iHoaDonRepository;
         private INhanVienRepository _INhanVienRepository;
-        private ISanPhamRepository _ISanPhamRepository;
         private IKhachHangRepository _ikhachHangRepository;
         private List<HoaDon> _lstHoadon;
         private List<ViewHoaDon> _viewHoaDons;
         public HoaDonService()
         {
             _iHoaDonRepository = new HoaDonRepository();
-            _ISanPhamRepository = new SanPhamRepository();
             _INhanVienRepository = new NhanVienRepository();
             _ikhachHangRepository = new KhachHangRepository();
             _lstHoadon = new List<HoaDon>();
@@ -66,32 +64,7 @@ namespace _2.BUS.Services
         {
             return _iHoaDonRepository.GetAll();
         }
-        public List<ViewHoaDon> GetAll()
-        {
-            List<ViewHoaDon> _viewHoaDons = new List<ViewHoaDon>();
-            _viewHoaDons = (from hd in _iHoaDonRepository.GetAll()
-                            join kh in _ikhachHangRepository.GetAll() on hd.IdKhachHang equals kh.Id
-                            join nv in _INhanVienRepository.GetAllNhanVien() on hd.IdNhanVien equals nv.Id
-                            join sp in _ISanPhamRepository.GetAllSanPham() on hd.IdSanOham equals sp.Id
-                            select new ViewHoaDon
-                            {       
-                               Id = hd.Id,
-                               khachhang = kh.Ten,
-                               nhanvien = nv.Ten,
-                               Ma = hd.Ma,
-                               TenSp = hd.TenSp,
-                               NgayGiao = hd.NgayTao,
-                               NgayThanhToan = hd.NgayThanhToan,
-                               NgayTao = hd.NgayTao,
-                               TenNguoiNhan = hd.TenNguoiNhan,
-                               DiaChi = hd.DiaChi,
-                               Sdt = hd.Sdt,
-                               GiamGia =hd.GiamGia,
-                               TrangThai = hd.TrangThai
-                            }).ToList();
-            return _viewHoaDons;
-
-        }
+        
 
         public ChucVu GetByID(Guid id)
         {
@@ -116,6 +89,31 @@ namespace _2.BUS.Services
             x.TrangThai = obj.TrangThai;
             _iHoaDonRepository.Update(x);
             return "thành công";
+        }
+        public List<ViewHoaDon> GetAll()
+        {
+            List<ViewHoaDon> _viewHoaDons = new List<ViewHoaDon>();
+            _viewHoaDons = (from hd in _iHoaDonRepository.GetAll()
+                            join kh in _ikhachHangRepository.GetAll() on hd.IdKhachHang equals kh.Id
+                            join nv in _INhanVienRepository.GetAllNhanVien() on hd.IdNhanVien equals nv.Id
+                            select new ViewHoaDon
+                            {
+                                Id = hd.Id,
+                                khachhang = kh.Ten,
+                                nhanvien = nv.Ten,
+                                Ma = hd.Ma,
+                                TenSp = hd.TenSp,
+                                NgayGiao = hd.NgayTao,
+                                NgayThanhToan = hd.NgayThanhToan,
+                                NgayTao = hd.NgayTao,
+                                TenNguoiNhan = hd.TenNguoiNhan,
+                                DiaChi = hd.DiaChi,
+                                Sdt = hd.Sdt,
+                                GiamGia = hd.GiamGia,
+                                TrangThai = hd.TrangThai
+                            }).ToList();
+            return _viewHoaDons;
+
         }
     }
 }

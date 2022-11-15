@@ -48,7 +48,6 @@ namespace _3.PL.Views
             dgrid_DsSanPham.Columns[9].Name = "Đế giày";
             dgrid_DsSanPham.Columns[10].Name = "Trạng thái";
             listChiTietGiay = _iChiTietGiayServices.GetViewChiTietGiay();
-            
             listChiTietGiay = listChiTietGiay.OrderBy(p => p.Ma).ToList();
             foreach (var item in listChiTietGiay )
             {
