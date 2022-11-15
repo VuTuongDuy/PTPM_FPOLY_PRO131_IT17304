@@ -33,7 +33,7 @@ namespace _2.BUS.Services
                 TrangThai = obj.TrangThai
             };
 
-            _IchucVuRepository.Add(cv); 
+            _IchucVuRepository.AddChucVu(cv); 
             return "Thêm thành công";
             
         }
@@ -52,14 +52,14 @@ namespace _2.BUS.Services
                 Ten = obj.Ten,
                 TrangThai = obj.TrangThai
             };
-            if (_IchucVuRepository.Delete(cv)) return "Xóa thành công";
+            if (_IchucVuRepository.DeleteChucVu(cv)) return "Xóa thành công";
             return "không thành công";
         }
 
         public List<ViewChucVu> GetAllChucVu()
         {
             List<ViewChucVu> _lstChucVu = new List<ViewChucVu>();
-            _lstChucVu = (from a in _IchucVuRepository.GetAll()
+            _lstChucVu = (from a in _IchucVuRepository.GetAllChucVu()
                           select new ViewChucVu()
                           {
                               Id = a.Id,
@@ -88,7 +88,7 @@ namespace _2.BUS.Services
                 Ten = obj.Ten,
                 TrangThai = obj.TrangThai
             };
-            if (_IchucVuRepository.Update(cv)) return "Sửa thành công";
+            if (_IchucVuRepository.UpdateChucVu(cv)) return "Sửa thành công";
             return "không thành công";
         }
     }

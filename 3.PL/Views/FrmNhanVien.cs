@@ -17,18 +17,27 @@ namespace _3.PL.Views
     {
         private INhanVienService _iNhanVienService;
         private IChucVuService _chucVuService;
-        private ViewNhanVien _vnv;
-        private List<ViewNhanVien> _lstNhanVien;
-        private Guid _inhanvien;
+        //private ViewNhanVien _lstViewNhanVien;
+        private List<ViewNhanVien> _lstViewNhanVien;
+        private Guid _Idnhanvien;
         public FrmNhanVien()
         {
             InitializeComponent();
             _iNhanVienService = new NhanVienService();
-            _vnv = new ViewNhanVien();
-          
-           
+            _chucVuService = new ChucVuService();
+            _lstViewNhanVien = new List<ViewNhanVien>();
+            LoadDataNhanVien();
+            LoadComboBox();
+
         }
-         public void LoadDataNhanVien()
+        public void LoadComboBox()
+        {
+            foreach (var x in _chucVuService.GetAllChucVu())
+            {
+                cmb_idChucVu.Items.Add(x.Ten);
+            }
+        }
+            public void LoadDataNhanVien()
         {
             drgid_NhanVien.ColumnCount = 12;
             drgid_NhanVien.Columns[0].Name = "ID";
@@ -42,30 +51,22 @@ namespace _3.PL.Views
             drgid_NhanVien.Columns[7].Name = "Địa Chỉ";
             drgid_NhanVien.Columns[8].Name = "SDt ";
             drgid_NhanVien.Columns[9].Name = "Mật Khẩu ";
-            drgid_NhanVien.Columns[10].Name = "ID Chức Vụ ";
+            drgid_NhanVien.Columns[10].Name = "Ten chức Vụ ";
             //drgid_NhanVien.Columns[13].Name = "ID GuiBC ";
             drgid_NhanVien.Columns[11].Name = "Trạng Thái ";
             drgid_NhanVien.Rows.Clear();
-            if (txt_TimKiem.Text != "")
-            {
-                _lstNhanVien.Where(p => p.Ma.ToLower().Contains(txt_Ma.Text.ToLower())).ToList();
-            }
-            foreach (var x in _iNhanVienService.GetAll())
+            var lstNhanVien = _iNhanVienService.GetViewNhanVien();
+            //if (txt_TimKiem.Text != "")
+            //{
+            //    _lstNhanVien = lstNhanVien.Where(p => p.Ma.ToLower().Contains(txt_Ma.Text.ToLower())).ToList();
+            //}
+            foreach (var x in lstNhanVien)
             {
                
-                drgid_NhanVien.Rows.Add( x.Id, x.Ma, x.Ho, x.TenDem, x.Ten, x.GioiTinh == "Nam" ? "Nam" : "Nữ", x.NgaySinh, x.DiaChi, x.Sdt,
-                  x.MatKhau,x.IdChucVu, x.TrangThai == 0 ? 0 : 1);
+                drgid_NhanVien.Rows.Add(x.Id, x.Ma, x.Ho, x.TenDem, x.Ten, x.GioiTinh == "Nam" ? 0: 1, x.NgaySinh, x.DiaChi, x.Sdt,
+                  x.MatKhau,x.TenChuCVu, x.TrangThai == 1 ? "Hoat dong":"Khong hoat dong");
             }
 
-        }
-        public void LoaddataCombobox()
-        {
-            foreach (var x in _chucVuService.GetAllChucVu())
-            {
-                cmb_idChucVu.Items.Add(x.Ten);
-
-            }
-            cmb_idChucVu.SelectedIndex = 0;
         }
         private void groupBox1_Enter(object sender, EventArgs e)
         {
@@ -86,7 +87,7 @@ namespace _3.PL.Views
                 AddNhanVienView addNhanVienView = new AddNhanVienView()
                 {
                    
-                    IdChucVu = cmb_idChucVu.Text != null ? _iNhanVienService.GetAll().FirstOrDefault(c => c.Ten == cmb_idChucVu.Text).Id : null,
+                    IdChucVu = cmb_idChucVu.Text != null ? _chucVuService.GetAllChucVu().FirstOrDefault(c => c.Ten == cmb_idChucVu.Text).Id : null,
                     Ma = txt_Ma.Text,
                     Ho = txt_Ho.Text,
                     TenDem = txt_TenDem.Text,
@@ -94,6 +95,7 @@ namespace _3.PL.Views
                     GioiTinh = rbtn_Nam.Checked ?"Nam":"Nu",
                     NgaySinh = dateTime_NgaySinh.Value,
                     DiaChi = txt_DiaChi.Text,
+                    Sdt = txt_Sdt.Text,
                     MatKhau = txt_MatKhau.Text,
                     TrangThai = cbx_HoatDong.Checked ? 1 : 0
                 };
@@ -109,13 +111,13 @@ namespace _3.PL.Views
 
         private void btn_Sua_Click(object sender, EventArgs e)
         {
-            DialogResult dialogResult = MessageBox.Show("Bạn chắc chắn muốn thêm?", "Thông báo", MessageBoxButtons.YesNo);
+            DialogResult dialogResult = MessageBox.Show("Bạn chắc chắn muốn sua?", "Thông báo", MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.Yes)
             {
                 UpdateNhanVienView updateNhanVienView = new UpdateNhanVienView()
                 {
-
-                    IdChucVu = cmb_idChucVu.Text != null ? _iNhanVienService.GetAll().FirstOrDefault(c => c.Ten == cmb_idChucVu.Text).Id : null,
+                    Id = _Idnhanvien,
+                    IdChucVu = cmb_idChucVu.Text != null ? _iNhanVienService.GetAllNhanVien().FirstOrDefault(c => c.Ten == cmb_idChucVu.Text).Id : null,
                     Ma = txt_Ma.Text,
                     Ho = txt_Ho.Text,
                     TenDem = txt_TenDem.Text,
@@ -123,6 +125,7 @@ namespace _3.PL.Views
                     GioiTinh = rbtn_Nam.Checked ? "Nam" : "Nu",
                     NgaySinh = dateTime_NgaySinh.Value,
                     DiaChi = txt_DiaChi.Text,
+                    Sdt = txt_Sdt.Text,
                     MatKhau = txt_MatKhau.Text,
                     TrangThai = cbx_HoatDong.Checked ? 1 : 0
                 };
@@ -141,7 +144,7 @@ namespace _3.PL.Views
             DialogResult dialogResult = MessageBox.Show("Bạn chắc chắn muốn xóa?", "Thông báo", MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.Yes)
             {
-                _iNhanVienService.Delete(_inhanvien);
+                _iNhanVienService.Delete(_Idnhanvien);
                 MessageBox.Show("Xóa thành công");
                 LoadDataNhanVien();
             }
@@ -166,26 +169,26 @@ namespace _3.PL.Views
 
         private void drgid_NhanVien_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            int rowindex = e.RowIndex;
-            if (rowindex == _iNhanVienService.GetAll().Count) return;
-            _inhanvien = Guid.Parse(drgid_NhanVien.Rows[rowindex].Cells[1].Value.ToString());
-            var nvien = _iNhanVienService.GetAll().FirstOrDefault(c => c.Id == _inhanvien);
-            txt_Ma.Text = nvien.Ma;
-            txt_Ho.Text = nvien.Ho;
-            txt_TenDem.Text = nvien.TenDem;
-            txt_Ten.Text = nvien.Ten;
-            txt_DiaChi.Text = nvien.DiaChi;
-            txt_MatKhau.Text = nvien.MatKhau;
-            dateTime_NgaySinh.Text = Convert.ToString(nvien.NgaySinh);
-            cmb_idChucVu.SelectedIndex = _iNhanVienService.GetAllNhanVien().FindIndex(c => c.Id == nvien.IdChucVu);
-
-            if (nvien.TrangThai == 1)
+            DataGridViewRow r = drgid_NhanVien.Rows[e.RowIndex];
+            _Idnhanvien = Guid.Parse(r.Cells[0].Value.ToString());
+            //cmb_ChucVu.Text = _NhanVienService.GetAllNV().FirstOrDefault(c => c.Id == _idNV).Ten;
+            cmb_idChucVu.Text = r.Cells[2].Value.ToString();
+            var x = _iNhanVienService.GetViewNhanVien().FirstOrDefault(c => c.Id == _Idnhanvien);
+            txt_Ma.Text = x.Ma;
+            txt_Ten.Text = x.Ten;
+            txt_DiaChi.Text = x.DiaChi;
+            dateTime_NgaySinh.Value = x.NgaySinh.Value;
+            if (x.TrangThai == 1)
             {
-                rbtn_Nam.Checked = true;
+                cbx_HoatDong.Checked = true;
                 return;
             }
-            rbtn_Nu.Checked = true;
+            else
+            {
+                cbx_KhongHoatDong.Checked = true;
+            }
         }
+  
 
         private void drgid_NhanVien_CellClick(object sender, DataGridViewCellEventArgs e)
         {

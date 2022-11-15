@@ -9,11 +9,12 @@ namespace _1.DAL.IRepositories
 {
     public interface IChucVuRepository
     {
-        bool Add(ChucVu obj);
-        bool Update(ChucVu obj);
-        bool Delete(ChucVu obj);
-        
-        ChucVu GetById(Guid id);
-        List<ChucVu> GetAll();
+        bool AddChucVu(ChucVu obj);
+        bool UpdateChucVu(ChucVu obj);
+
+        bool DeleteChucVu(ChucVu obj);
+       
+        List<ChucVu> GetAllChucVu();
+
     }
 }

@@ -77,6 +77,7 @@
             this.drgid_NhanVien.Name = "drgid_NhanVien";
             this.drgid_NhanVien.RowHeadersWidth = 51;
             this.drgid_NhanVien.RowTemplate.Height = 29;
+            this.drgid_NhanVien.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.drgid_NhanVien.Size = new System.Drawing.Size(1314, 188);
             this.drgid_NhanVien.TabIndex = 0;
             this.drgid_NhanVien.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.drgid_NhanVien_CellClick);
@@ -128,9 +129,9 @@
             this.label11.AutoSize = true;
             this.label11.Location = new System.Drawing.Point(151, 343);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(80, 20);
+            this.label11.Size = new System.Drawing.Size(67, 20);
             this.label11.TabIndex = 24;
-            this.label11.Text = "Id Chức Vụ";
+            this.label11.Text = " Chức Vụ";
             // 
             // dateTime_NgaySinh
             // 

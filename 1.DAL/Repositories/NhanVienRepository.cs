@@ -9,64 +9,59 @@ using System.Threading.Tasks;
 
 namespace _1.DAL.Repositories
 {
-
-
-    public class NhanVienRepository  : INhanVienRepository
-
+    public class NhanVienRepository :INhanVienRepository
     {
-        private FpolyDBContext _dbContext;
+        private FpolyDBContext _dBContext;
         public NhanVienRepository()
         {
-            _dbContext = new FpolyDBContext();
-        }
-        public bool AddNhanVien(NhanVien obj)
-        {
-            if (obj == null) return false;
-            _dbContext.NhanViens.Add(obj);
-            _dbContext.SaveChanges();
-            return true;
-           
+            _dBContext  = new FpolyDBContext();
         }
 
-        public bool DeleteNhanVien(NhanVien obj)
+        public bool Add(NhanVien obj)
         {
-            if (obj == null) return false;
-            var temobj = _dbContext.NhanViens.FirstOrDefault(s => s.Id == obj.Id);
-            _dbContext.Remove(temobj);
-            _dbContext.SaveChanges();
+            _dBContext.NhanViens.Add(obj);
+            _dBContext.SaveChanges();
             return true;
         }
 
+        public bool Delete(NhanVien obj)
+        {
+            //var ob = _dBContext.NhanViens.FirstOrDefault(c => c.Id == obj.Id);
+            _dBContext.Remove(obj);
+            _dBContext.SaveChanges();
+            return true;
+        }
 
         public List<NhanVien> GetAllNhanVien()
         {
-            return _dbContext.NhanViens.ToList();
+           return _dBContext.NhanViens.ToList();
         }
 
-        public NhanVien GetById(Guid id)
-        {
-            if (id == Guid.Empty) return null;
+        //public NhanVien GetByid(Guid id)
+        //{
+        //    throw new NotImplementedException();
+        //}
 
-            return _dbContext.NhanViens.FirstOrDefault(s => s.Id == id);
-        }
-
-        public bool UpdateNhanVien(NhanVien obj)
+        public bool Update(NhanVien obj)
         {
-            if (obj == null) return false;
-            var temobj = _dbContext.NhanViens.FirstOrDefault(s => s.Id == obj.Id);
-            temobj.Ma = obj.Ma;
-            temobj.Ten = obj.Ten;
-            temobj.TenDem = obj.TenDem;
-            temobj.Ho = obj.Ho;
-            temobj.NgaySinh = obj.NgaySinh;
-            temobj.Sdt = obj.Sdt;
-            temobj.DiaChi = obj.DiaChi;
-            temobj.MatKhau = obj.MatKhau;
-            temobj.TrangThai = obj.TrangThai;
-            _dbContext.NhanViens.Update(temobj);
-            _dbContext.SaveChanges();
+            _dBContext.Update(obj);
+            _dBContext.SaveChanges();
             return true;
-           
+            //var ob = _dBContext.NhanViens.FirstOrDefault(c => c.Id == obj.Id);
+            //ob.Id = obj.Id;
+            //ob.Ma=obj.Ma;
+            //ob.Ho=obj.Ho;
+            //ob.TenDem=obj.TenDem;
+            //ob.Ten=obj.Ten;
+            //ob.GioiTinh=obj.GioiTinh;
+            //ob.NgaySinh=obj.NgaySinh;
+            //ob.DiaChi=obj.DiaChi;
+            //ob.MatKhau=obj.MatKhau;
+            //ob.IdChucVu=obj.IdChucVu;
+            //obj.TrangThai=obj.TrangThai;
+            //_dBContext.NhanViens.Remove(ob);
+            //_dBContext.SaveChanges();
+            //return true;
         }
     }
 }

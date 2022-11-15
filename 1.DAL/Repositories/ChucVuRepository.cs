@@ -9,54 +9,44 @@ using System.Threading.Tasks;
 
 namespace _1.DAL.Repositories
 {
-
+  
     public class ChucVuRepository : IChucVuRepository
-
     {
-        private FpolyDBContext _dbContext;
-        public bool Add(ChucVu obj)
+        private FpolyDBContext _dBContxet;
+        public ChucVuRepository()
         {
+            _dBContxet = new FpolyDBContext();
+        }
 
-            if (obj == null) return false;
-            _dbContext.ChucVus.Add(obj);
-            _dbContext.SaveChanges();
+        public bool AddChucVu(ChucVu obj)
+        {
+            _dBContxet.ChucVus.Add(obj);
+            _dBContxet.SaveChanges();
             return true;
         }
 
-        public bool Delete(ChucVu obj)
+        public bool DeleteChucVu(ChucVu obj)
         {
-            if (obj == null) return false;
-            var temobj = _dbContext.ChiTietGiays.FirstOrDefault(s => s.Id == obj.Id);
-
-            _dbContext.Remove(temobj);
-            _dbContext.SaveChanges();
+            var tem = _dBContxet.ChucVus.FirstOrDefault(c=> c.Id == obj.Id);
+            _dBContxet.ChucVus.Remove(tem);
+            _dBContxet.SaveChanges();
             return true;
         }
 
-        public List<ChucVu> GetAll()
+        public List<ChucVu> GetAllChucVu()
         {
-            return _dbContext.ChucVus.ToList();
+           return _dBContxet.ChucVus.ToList();
         }
 
-        public ChucVu GetById(Guid id)
+        public bool UpdateChucVu(ChucVu obj)
         {
-            if (id == Guid.Empty) return null;
-
-            return _dbContext.ChucVus.FirstOrDefault(s => s.Id == id);
-        }
-
-        public bool Update(ChucVu obj)
-        {
-            if (obj == null) return false;
-            var temobj = _dbContext.ChucVus.FirstOrDefault(s => s.Id == obj.Id);
-            temobj.Ma = obj.Ma;
-            temobj.Ten = obj.Ten;
-            _dbContext.ChucVus.Update(temobj);
-            _dbContext.SaveChanges();
+            var tem = _dBContxet.ChucVus.FirstOrDefault(c => c.Id == obj.Id);
+            tem.Ma = obj.Ma;
+            tem.Ten = obj.Ten;
+            tem.TrangThai = obj.TrangThai;
+            _dBContxet.ChucVus.Update(tem);
+            _dBContxet.SaveChanges();
             return true;
         }
-
-     
-
     }
 }

@@ -13,7 +13,8 @@ namespace _2.BUS.IServices
         bool AddNhanVien(AddNhanVienView obj);
         bool UpdateNhanVien(UpdateNhanVienView obj);
         bool Delete(Guid IdNhanVien);
-        List<ViewNhanVien> GetAll();
-        List <NhanVien> GetAllNhanVien();
+        List<NhanVien> GetAllNhanVien();
+        List<ViewNhanVien> GetViewNhanVien();
+       
     }
 }
