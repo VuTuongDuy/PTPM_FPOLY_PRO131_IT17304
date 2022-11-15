@@ -264,5 +264,10 @@ namespace _3.PL.Views
         {
 
         }
+
+        private void FrmChiTietGiay_Load_1(object sender, EventArgs e)
+        {
+
+        }
     }
 }

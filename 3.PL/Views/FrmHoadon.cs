@@ -57,7 +57,7 @@ namespace _3.PL.Views
             foreach (var x in _ihoadonservice.GetallHoadon())
             {
                 var kh = _Ikhachhangservice.GetAll().FirstOrDefault(c => c.Id == x.IdKhachHang);
-                var nv = _Inhanvienservice.GetAll().FirstOrDefault(c => c.Id == x.IdNhanVien);
+                var nv = _Inhanvienservice.GetAllNhanVien().FirstOrDefault(c => c.Id == x.IdNhanVien);
                 dgrid_view.Rows.Add(x.Id,x.Ma,kh.Ten,nv.Ten,x.TenSp,x.TenNguoiNhan,x.NgayTao,x.NgayGiao,x.NgayThanhToan,x.DiaChi,x.Sdt,x.GiamGia,x.TrangThai);
             };
 
@@ -70,7 +70,7 @@ namespace _3.PL.Views
 
             }
             cbx_khachhang.SelectedIndex = 0;
-            foreach (var x in _Inhanvienservice.GetAll())
+            foreach (var x in _Inhanvienservice.GetAllNhanVien())
             {
                 cbx_nhanvien.Items.Add(x.Ten);
             }
@@ -116,7 +116,7 @@ namespace _3.PL.Views
                 TrangThai = rbtn_hoatdong.Checked ? 1 : rbtn_khonghoatdong.Checked ? 0 :2,
                 //IdSanOham  = cbx_sanpham.Text != null ? _iSanphamService.GetAllSanPham().FirstOrDefault(c => c.Ten == cbx_sanpham.Text).Id : null,
                 IdKhachHang = cbx_khachhang.Text != null ? _Ikhachhangservice.GetAll().FirstOrDefault(c => c.Ten == cbx_khachhang.Text).Id : null,
-                IdNhanVien = cbx_nhanvien.Text != null ? _Inhanvienservice.GetAll().FirstOrDefault(c => c.Ten == cbx_nhanvien.Text).Id : null,
+                IdNhanVien = cbx_nhanvien.Text != null ? _Inhanvienservice.GetAllNhanVien().FirstOrDefault(c => c.Ten == cbx_nhanvien.Text).Id : null,
 
             };
         }
@@ -166,6 +166,11 @@ namespace _3.PL.Views
         }
 
         private void label10_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void FrmHoadon_Load(object sender, EventArgs e)
         {
 
         }

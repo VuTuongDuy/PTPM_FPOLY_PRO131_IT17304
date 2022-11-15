@@ -26,17 +26,18 @@ namespace _3.PL.Views
         }
         private void loaddata()
         {
-            dgrid_ChatLieu.ColumnCount = 4;
-            dgrid_ChatLieu.Columns[0].Name = "ID";
-            dgrid_ChatLieu.Columns[0].Visible = false;
-            dgrid_ChatLieu.Columns[1].Name = "Mã";
-            dgrid_ChatLieu.Columns[2].Name = "Tên";
-            dgrid_ChatLieu.Columns[3].Name = "Trạng thái";
+            dgrid_ChucVu.ColumnCount = 4;
+            dgrid_ChucVu.Columns[0].Name = "ID";
+            dgrid_ChucVu.Columns[0].Visible = false;
+            dgrid_ChucVu.Columns[1].Name = "Mã";
+            dgrid_ChucVu.Columns[2].Name = "Tên";
+            dgrid_ChucVu.Columns[3].Name = "Trạng thái";
 
-            dgrid_ChatLieu.Rows.Clear();
-            foreach (var item in _IchucVuService.GetAllChucVu())
+            dgrid_ChucVu.Rows.Clear();
+            var x = _IchucVuService.GetAllChucVu();
+            foreach (var item in x)
             {
-                dgrid_ChatLieu.Rows.Add(
+                dgrid_ChucVu.Rows.Add(
                     item.Id, item.Ma, item.Ten,
                     item.TrangThai);
             }
@@ -110,7 +111,7 @@ namespace _3.PL.Views
         {
             int rowindex = e.RowIndex;
             if (rowindex == _IchucVuService.GetAllChucVu().Count) return;
-            _id = Guid.Parse(dgrid_ChatLieu.CurrentRow.Cells[0].Value.ToString());
+            _id = Guid.Parse(dgrid_ChucVu.CurrentRow.Cells[0].Value.ToString());
             var cv = _IchucVuService.GetAllChucVu().FirstOrDefault(c => c.Id == _id);
             txt_Ten.Text = Convert.ToString(cv.Ma);
             txt_Ma.Text = cv.Ten;
@@ -128,6 +129,11 @@ namespace _3.PL.Views
             {
                 return;
             }
+        }
+
+        private void FrmChucVu_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

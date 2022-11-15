@@ -49,7 +49,9 @@ namespace _2.BUS.Services
                 GiamGia = obj.GiamGia,
                 TrangThai = obj.TrangThai,
             };
+
             _iHoaDonRepository.Add(HoaDon);
+
             return "thành công";
         }
 
@@ -69,7 +71,7 @@ namespace _2.BUS.Services
             List<ViewHoaDon> _viewHoaDons = new List<ViewHoaDon>();
             _viewHoaDons = (from hd in _iHoaDonRepository.GetAll()
                             join kh in _ikhachHangRepository.GetAll() on hd.IdKhachHang equals kh.Id
-                            join nv in _INhanVienRepository.GetAll() on hd.IdNhanVien equals nv.Id
+                            join nv in _INhanVienRepository.GetAllNhanVien() on hd.IdNhanVien equals nv.Id
                             join sp in _ISanPhamRepository.GetAllSanPham() on hd.IdSanOham equals sp.Id
                             select new ViewHoaDon
                             {       

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace _2.BUS.ViewModels
 {
-    public class ViewNhanVien
+    public class UpdateNhanVienView
     {
         public Guid? Id { get; set; }
 
@@ -19,7 +19,6 @@ namespace _2.BUS.ViewModels
         public string Ten { get; set; }
 
         public string GioiTinh { get; set; }
-        public string? TenChuCVu { get; set; }
 
         public DateTime? NgaySinh { get; set; }
 

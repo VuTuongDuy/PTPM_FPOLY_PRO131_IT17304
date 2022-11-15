@@ -12,7 +12,8 @@ namespace _1.DAL.IRepositories
         bool Add(NhanVien obj);
         bool Update(NhanVien obj);
         bool Delete(NhanVien obj);
-        NhanVien GetById(Guid id);
-        List<NhanVien> GetAll();
+        //NhanVien GetByid(Guid id);
+        List<NhanVien> GetAllNhanVien();
+
     }
 }

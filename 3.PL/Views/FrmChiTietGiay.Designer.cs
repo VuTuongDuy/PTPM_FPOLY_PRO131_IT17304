@@ -155,7 +155,9 @@
             this.cbx_khongHD.Text = "Không hoạt động";
             this.cbx_khongHD.UseVisualStyleBackColor = true;
             this.cbx_khongHD.CheckedChanged += new System.EventHandler(this.cbx_khongHD_CheckedChanged);
-
+            // 
+            // cbx_HoatDong
+            // 
             this.cbx_HoatDong.AutoSize = true;
             this.cbx_HoatDong.Location = new System.Drawing.Point(548, 263);
             this.cbx_HoatDong.Name = "cbx_HoatDong";
@@ -471,6 +473,7 @@
             this.Controls.Add(this.dgrid_ChiTietGiay);
             this.Name = "FrmChiTietGiay";
             this.Text = "FrmChiTietGiay";
+            this.Load += new System.EventHandler(this.FrmChiTietGiay_Load_1);
             ((System.ComponentModel.ISupportInitialize)(this.dgrid_ChiTietGiay)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

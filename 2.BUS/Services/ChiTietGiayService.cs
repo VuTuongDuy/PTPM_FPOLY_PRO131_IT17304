@@ -65,8 +65,10 @@ namespace _2.BUS.Services
         public bool DeleteCTGiay(Guid IdCTSP)
         {
             var x = _IChiTietGiayRepository.GetAllChiTietGiay().FirstOrDefault(p => p.Id == IdCTSP);
+            
             _IChiTietGiayRepository.DeleteChiTietGiay(x);
             return true;
+
         }
 
         public bool UpdateCTGiay(UpdateChiTietSPView obj)
