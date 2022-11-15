@@ -75,7 +75,6 @@ namespace _2.BUS.Services
                             {       
                                Id = hd.Id,
                                khachhang = kh.Ten,
-                               sanpham = sp.Ten,
                                nhanvien = nv.Ten,
                                Ma = hd.Ma,
                                TenSp = hd.TenSp,
@@ -113,8 +112,6 @@ namespace _2.BUS.Services
             x.Sdt = obj.Sdt;
             x.GiamGia = obj.GiamGia;
             x.TrangThai = obj.TrangThai;
-
-            
             _iHoaDonRepository.Update(x);
             return "thành công";
         }
